@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		8C79571F25EA56AD00807591 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79571E25EA56AD00807591 /* AppDelegate.swift */; };
 		8C79572125EA56AD00807591 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79572025EA56AD00807591 /* SceneDelegate.swift */; };
-		8C79572325EA56AD00807591 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79572225EA56AD00807591 /* ViewController.swift */; };
 		8C79572825EA56AF00807591 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C79572725EA56AF00807591 /* Assets.xcassets */; };
 		8C79572B25EA56AF00807591 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C79572925EA56AF00807591 /* LaunchScreen.storyboard */; };
 		8C79573625EA56AF00807591 /* LastFM_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79573525EA56AF00807591 /* LastFM_AppTests.swift */; };
 		8C79575A25EA595900807591 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79575925EA595900807591 /* TabBarController.swift */; };
 		8C79575E25EA615500807591 /* TabBarControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79575D25EA615500807591 /* TabBarControllerTests.swift */; };
+		8C79576325EA663100807591 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79576225EA663100807591 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +31,6 @@
 		8C79571B25EA56AD00807591 /* LastFM-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LastFM-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C79571E25EA56AD00807591 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C79572025EA56AD00807591 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8C79572225EA56AD00807591 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8C79572725EA56AF00807591 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C79572A25EA56AF00807591 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8C79572C25EA56AF00807591 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -40,6 +39,7 @@
 		8C79573725EA56AF00807591 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C79575925EA595900807591 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		8C79575D25EA615500807591 /* TabBarControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllerTests.swift; sourceTree = "<group>"; };
+		8C79576225EA663100807591 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,11 +83,11 @@
 			children = (
 				8C79571E25EA56AD00807591 /* AppDelegate.swift */,
 				8C79572025EA56AD00807591 /* SceneDelegate.swift */,
-				8C79572225EA56AD00807591 /* ViewController.swift */,
 				8C79572725EA56AF00807591 /* Assets.xcassets */,
 				8C79572925EA56AF00807591 /* LaunchScreen.storyboard */,
 				8C79572C25EA56AF00807591 /* Info.plist */,
 				8C79575925EA595900807591 /* TabBarController.swift */,
+				8C79576125EA661400807591 /* Search */,
 			);
 			path = "LastFM-App";
 			sourceTree = "<group>";
@@ -100,6 +100,14 @@
 				8C79575D25EA615500807591 /* TabBarControllerTests.swift */,
 			);
 			path = "LastFM-AppTests";
+			sourceTree = "<group>";
+		};
+		8C79576125EA661400807591 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				8C79576225EA663100807591 /* SearchViewController.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,7 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C79572325EA56AD00807591 /* ViewController.swift in Sources */,
+				8C79576325EA663100807591 /* SearchViewController.swift in Sources */,
 				8C79575A25EA595900807591 /* TabBarController.swift in Sources */,
 				8C79571F25EA56AD00807591 /* AppDelegate.swift in Sources */,
 				8C79572125EA56AD00807591 /* SceneDelegate.swift in Sources */,
