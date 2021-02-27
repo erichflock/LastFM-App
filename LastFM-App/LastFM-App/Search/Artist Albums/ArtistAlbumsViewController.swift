@@ -43,6 +43,7 @@ class ArtistAlbumsViewController: UIViewController {
         guard let collectionView = collectionView else { return }
         collectionView.backgroundColor = .systemBackground
         collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.register(ArtistAlbumCollectionViewCell.self, forCellWithReuseIdentifier: "ArtistAlbumCollectionViewCell")
         
         view.addSubview(collectionView)
@@ -56,6 +57,7 @@ class ArtistAlbumsViewController: UIViewController {
     }
 }
 
+//MARK: - UICollectionViewDataSource
 extension ArtistAlbumsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -68,4 +70,14 @@ extension ArtistAlbumsViewController: UICollectionViewDataSource {
         return cell ?? UICollectionViewCell()
     }
     
+}
+
+//MARK: - UICollectionViewDelegate
+extension ArtistAlbumsViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Did Select item at \(indexPath.item)")
+        let albumDetailsViewController = AlbumDetailsViewController(albumTitle: "Top Album", artistName: "Wesley Safadao")
+        navigationController?.pushViewController(albumDetailsViewController, animated: true)
+    }
 }
