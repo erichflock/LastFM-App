@@ -21,6 +21,7 @@
 		8C79578425EA91DF00807591 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79578325EA91DF00807591 /* TestHelpers.swift */; };
 		8C79579025EA979900807591 /* ArtistAlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79578F25EA979900807591 /* ArtistAlbumCollectionViewCell.swift */; };
 		8C79579925EAA93700807591 /* AlbumDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79579825EAA93700807591 /* AlbumDetailsViewController.swift */; };
+		8C79579D25EAB59C00807591 /* AlbumDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79579C25EAB59C00807591 /* AlbumDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		8C79578325EA91DF00807591 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		8C79578F25EA979900807591 /* ArtistAlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistAlbumCollectionViewCell.swift; sourceTree = "<group>"; };
 		8C79579825EAA93700807591 /* AlbumDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsViewController.swift; sourceTree = "<group>"; };
+		8C79579C25EAB59C00807591 /* AlbumDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				8C79579825EAA93700807591 /* AlbumDetailsViewController.swift */,
+				8C79579C25EAB59C00807591 /* AlbumDetailsView.swift */,
 			);
 			path = "Album Details";
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				8C79576325EA663100807591 /* SearchTableViewController.swift in Sources */,
 				8C79575A25EA595900807591 /* TabBarController.swift in Sources */,
 				8C79579925EAA93700807591 /* AlbumDetailsViewController.swift in Sources */,
+				8C79579D25EAB59C00807591 /* AlbumDetailsView.swift in Sources */,
 				8C79577525EA8A5000807591 /* ArtistAlbumsViewController.swift in Sources */,
 				8C79576C25EA7EBE00807591 /* ArtistTableViewCell.swift in Sources */,
 				8C79579025EA979900807591 /* ArtistAlbumCollectionViewCell.swift in Sources */,
