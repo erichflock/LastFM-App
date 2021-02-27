@@ -13,18 +13,10 @@
 		8C79572825EA56AF00807591 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C79572725EA56AF00807591 /* Assets.xcassets */; };
 		8C79572B25EA56AF00807591 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C79572925EA56AF00807591 /* LaunchScreen.storyboard */; };
 		8C79573625EA56AF00807591 /* LastFM_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79573525EA56AF00807591 /* LastFM_AppTests.swift */; };
-		8C79574125EA56AF00807591 /* LastFM_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79574025EA56AF00807591 /* LastFM_AppUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		8C79573225EA56AF00807591 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8C79571325EA56AD00807591 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8C79571A25EA56AD00807591;
-			remoteInfo = "LastFM-App";
-		};
-		8C79573D25EA56AF00807591 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8C79571325EA56AD00807591 /* Project object */;
 			proxyType = 1;
@@ -44,9 +36,6 @@
 		8C79573125EA56AF00807591 /* LastFM-AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LastFM-AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C79573525EA56AF00807591 /* LastFM_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFM_AppTests.swift; sourceTree = "<group>"; };
 		8C79573725EA56AF00807591 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8C79573C25EA56AF00807591 /* LastFM-AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LastFM-AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C79574025EA56AF00807591 /* LastFM_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFM_AppUITests.swift; sourceTree = "<group>"; };
-		8C79574225EA56AF00807591 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,13 +53,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8C79573925EA56AF00807591 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -79,7 +61,6 @@
 			children = (
 				8C79571D25EA56AD00807591 /* LastFM-App */,
 				8C79573425EA56AF00807591 /* LastFM-AppTests */,
-				8C79573F25EA56AF00807591 /* LastFM-AppUITests */,
 				8C79571C25EA56AD00807591 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -89,7 +70,6 @@
 			children = (
 				8C79571B25EA56AD00807591 /* LastFM-App.app */,
 				8C79573125EA56AF00807591 /* LastFM-AppTests.xctest */,
-				8C79573C25EA56AF00807591 /* LastFM-AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,15 +94,6 @@
 				8C79573725EA56AF00807591 /* Info.plist */,
 			);
 			path = "LastFM-AppTests";
-			sourceTree = "<group>";
-		};
-		8C79573F25EA56AF00807591 /* LastFM-AppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				8C79574025EA56AF00807591 /* LastFM_AppUITests.swift */,
-				8C79574225EA56AF00807591 /* Info.plist */,
-			);
-			path = "LastFM-AppUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,24 +134,6 @@
 			productReference = 8C79573125EA56AF00807591 /* LastFM-AppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		8C79573B25EA56AF00807591 /* LastFM-AppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8C79574B25EA56AF00807591 /* Build configuration list for PBXNativeTarget "LastFM-AppUITests" */;
-			buildPhases = (
-				8C79573825EA56AF00807591 /* Sources */,
-				8C79573925EA56AF00807591 /* Frameworks */,
-				8C79573A25EA56AF00807591 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8C79573E25EA56AF00807591 /* PBXTargetDependency */,
-			);
-			name = "LastFM-AppUITests";
-			productName = "LastFM-AppUITests";
-			productReference = 8C79573C25EA56AF00807591 /* LastFM-AppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -194,10 +147,6 @@
 						CreatedOnToolsVersion = 12.4;
 					};
 					8C79573025EA56AF00807591 = {
-						CreatedOnToolsVersion = 12.4;
-						TestTargetID = 8C79571A25EA56AD00807591;
-					};
-					8C79573B25EA56AF00807591 = {
 						CreatedOnToolsVersion = 12.4;
 						TestTargetID = 8C79571A25EA56AD00807591;
 					};
@@ -218,7 +167,6 @@
 			targets = (
 				8C79571A25EA56AD00807591 /* LastFM-App */,
 				8C79573025EA56AF00807591 /* LastFM-AppTests */,
-				8C79573B25EA56AF00807591 /* LastFM-AppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -234,13 +182,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8C79572F25EA56AF00807591 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8C79573A25EA56AF00807591 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -268,14 +209,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8C79573825EA56AF00807591 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8C79574125EA56AF00807591 /* LastFM_AppUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -283,11 +216,6 @@
 			isa = PBXTargetDependency;
 			target = 8C79571A25EA56AD00807591 /* LastFM-App */;
 			targetProxy = 8C79573225EA56AF00807591 /* PBXContainerItemProxy */;
-		};
-		8C79573E25EA56AF00807591 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8C79571A25EA56AD00807591 /* LastFM-App */;
-			targetProxy = 8C79573D25EA56AF00807591 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -501,46 +429,6 @@
 			};
 			name = Release;
 		};
-		8C79574C25EA56AF00807591 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SE47ZVXRT6;
-				INFOPLIST_FILE = "LastFM-AppUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.flock.LastFM-AppUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "LastFM-App";
-			};
-			name = Debug;
-		};
-		8C79574D25EA56AF00807591 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SE47ZVXRT6;
-				INFOPLIST_FILE = "LastFM-AppUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.flock.LastFM-AppUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "LastFM-App";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -567,15 +455,6 @@
 			buildConfigurations = (
 				8C79574925EA56AF00807591 /* Debug */,
 				8C79574A25EA56AF00807591 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8C79574B25EA56AF00807591 /* Build configuration list for PBXNativeTarget "LastFM-AppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8C79574C25EA56AF00807591 /* Debug */,
-				8C79574D25EA56AF00807591 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
