@@ -16,6 +16,9 @@
 		8C79575E25EA615500807591 /* TabBarControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79575D25EA615500807591 /* TabBarControllerTests.swift */; };
 		8C79576325EA663100807591 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79576225EA663100807591 /* SearchTableViewController.swift */; };
 		8C79576C25EA7EBE00807591 /* ArtistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79576B25EA7EBE00807591 /* ArtistTableViewCell.swift */; };
+		8C79577525EA8A5000807591 /* ArtistAlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79577425EA8A5000807591 /* ArtistAlbumsViewController.swift */; };
+		8C79577B25EA8D1800807591 /* SearchTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79577A25EA8D1800807591 /* SearchTableViewControllerTests.swift */; };
+		8C79578425EA91DF00807591 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79578325EA91DF00807591 /* TestHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +45,9 @@
 		8C79575D25EA615500807591 /* TabBarControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllerTests.swift; sourceTree = "<group>"; };
 		8C79576225EA663100807591 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		8C79576B25EA7EBE00807591 /* ArtistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistTableViewCell.swift; sourceTree = "<group>"; };
+		8C79577425EA8A5000807591 /* ArtistAlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistAlbumsViewController.swift; sourceTree = "<group>"; };
+		8C79577A25EA8D1800807591 /* SearchTableViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewControllerTests.swift; sourceTree = "<group>"; };
+		8C79578325EA91DF00807591 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +103,11 @@
 		8C79573425EA56AF00807591 /* LastFM-AppTests */ = {
 			isa = PBXGroup;
 			children = (
+				8C79578A25EA921D00807591 /* Search */,
+				8C79578925EA921200807591 /* TabBar */,
 				8C79573525EA56AF00807591 /* LastFM_AppTests.swift */,
 				8C79573725EA56AF00807591 /* Info.plist */,
-				8C79575D25EA615500807591 /* TabBarControllerTests.swift */,
+				8C79578225EA91C600807591 /* Helpers */,
 			);
 			path = "LastFM-AppTests";
 			sourceTree = "<group>";
@@ -109,6 +117,7 @@
 			children = (
 				8C79576225EA663100807591 /* SearchTableViewController.swift */,
 				8C79576A25EA7E8A00807591 /* Cell */,
+				8C79577325EA886F00807591 /* Artist Albums */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -119,6 +128,38 @@
 				8C79576B25EA7EBE00807591 /* ArtistTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		8C79577325EA886F00807591 /* Artist Albums */ = {
+			isa = PBXGroup;
+			children = (
+				8C79577425EA8A5000807591 /* ArtistAlbumsViewController.swift */,
+			);
+			path = "Artist Albums";
+			sourceTree = "<group>";
+		};
+		8C79578225EA91C600807591 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8C79578325EA91DF00807591 /* TestHelpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8C79578925EA921200807591 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				8C79575D25EA615500807591 /* TabBarControllerTests.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		8C79578A25EA921D00807591 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				8C79577A25EA8D1800807591 /* SearchTableViewControllerTests.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +263,7 @@
 			files = (
 				8C79576325EA663100807591 /* SearchTableViewController.swift in Sources */,
 				8C79575A25EA595900807591 /* TabBarController.swift in Sources */,
+				8C79577525EA8A5000807591 /* ArtistAlbumsViewController.swift in Sources */,
 				8C79576C25EA7EBE00807591 /* ArtistTableViewCell.swift in Sources */,
 				8C79571F25EA56AD00807591 /* AppDelegate.swift in Sources */,
 				8C79572125EA56AD00807591 /* SceneDelegate.swift in Sources */,
@@ -233,7 +275,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C79573625EA56AF00807591 /* LastFM_AppTests.swift in Sources */,
+				8C79577B25EA8D1800807591 /* SearchTableViewControllerTests.swift in Sources */,
 				8C79575E25EA615500807591 /* TabBarControllerTests.swift in Sources */,
+				8C79578425EA91DF00807591 /* TestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -57,6 +57,8 @@ extension SearchTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Did Select Row At \(indexPath.row)")
+        let artistAlbumsViewController = ArtistAlbumsViewController()
+        navigationController?.pushViewController(artistAlbumsViewController, animated: true)
     }
     
 }
