@@ -14,12 +14,17 @@ class SearchViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSearchController()
+        setupTableView()
     }
     
     private func setupSearchController() {
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Artists"
         tableView.tableHeaderView = searchController.searchBar
+    }
+    
+    private func setupTableView() {
+        tableView.register(ArtistTableViewCell.self,  forCellReuseIdentifier: "ArtistTableViewCell")
     }
     
 }
@@ -30,4 +35,28 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
     }
+}
+
+//MARK: - UITableViewDataSource
+extension SearchViewController  {
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ArtistTableViewCell", for: indexPath) as? ArtistTableViewCell
+        cell?.viewModel = .init(name: "Wesley Safadao", listenersCount: 1000)
+        return cell ?? UITableViewCell()
+    }
+    
+}
+
+//MARK: - UITableViewDelegate
+extension SearchViewController {
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Did Select Row At \(indexPath.row)")
+    }
+    
 }

@@ -15,6 +15,7 @@
 		8C79575A25EA595900807591 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79575925EA595900807591 /* TabBarController.swift */; };
 		8C79575E25EA615500807591 /* TabBarControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79575D25EA615500807591 /* TabBarControllerTests.swift */; };
 		8C79576325EA663100807591 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79576225EA663100807591 /* SearchViewController.swift */; };
+		8C79576C25EA7EBE00807591 /* ArtistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79576B25EA7EBE00807591 /* ArtistTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		8C79575925EA595900807591 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		8C79575D25EA615500807591 /* TabBarControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllerTests.swift; sourceTree = "<group>"; };
 		8C79576225EA663100807591 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		8C79576B25EA7EBE00807591 /* ArtistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,8 +108,17 @@
 			isa = PBXGroup;
 			children = (
 				8C79576225EA663100807591 /* SearchViewController.swift */,
+				8C79576A25EA7E8A00807591 /* Cell */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		8C79576A25EA7E8A00807591 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8C79576B25EA7EBE00807591 /* ArtistTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,6 +222,7 @@
 			files = (
 				8C79576325EA663100807591 /* SearchViewController.swift in Sources */,
 				8C79575A25EA595900807591 /* TabBarController.swift in Sources */,
+				8C79576C25EA7EBE00807591 /* ArtistTableViewCell.swift in Sources */,
 				8C79571F25EA56AD00807591 /* AppDelegate.swift in Sources */,
 				8C79572125EA56AD00807591 /* SceneDelegate.swift in Sources */,
 			);
