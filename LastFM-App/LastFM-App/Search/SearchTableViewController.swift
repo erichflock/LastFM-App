@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchViewController: UITableViewController {
+class SearchTableViewController: UITableViewController {
     
     private let searchController = UISearchController()
     
@@ -31,14 +31,14 @@ class SearchViewController: UITableViewController {
 
 
 //MARK: - UISearchBarDelegate
-extension SearchViewController: UISearchBarDelegate {
+extension SearchTableViewController: UISearchBarDelegate {
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
     }
 }
 
 //MARK: - UITableViewDataSource
-extension SearchViewController  {
+extension SearchTableViewController  {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
@@ -53,7 +53,7 @@ extension SearchViewController  {
 }
 
 //MARK: - UITableViewDelegate
-extension SearchViewController {
+extension SearchTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Did Select Row At \(indexPath.row)")
