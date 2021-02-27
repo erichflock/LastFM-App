@@ -13,6 +13,7 @@
 		8C79572825EA56AF00807591 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C79572725EA56AF00807591 /* Assets.xcassets */; };
 		8C79572B25EA56AF00807591 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C79572925EA56AF00807591 /* LaunchScreen.storyboard */; };
 		8C79573625EA56AF00807591 /* LastFM_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79573525EA56AF00807591 /* LastFM_AppTests.swift */; };
+		8C79575A25EA595900807591 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79575925EA595900807591 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		8C79573125EA56AF00807591 /* LastFM-AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LastFM-AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C79573525EA56AF00807591 /* LastFM_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFM_AppTests.swift; sourceTree = "<group>"; };
 		8C79573725EA56AF00807591 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C79575925EA595900807591 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				8C79572725EA56AF00807591 /* Assets.xcassets */,
 				8C79572925EA56AF00807591 /* LaunchScreen.storyboard */,
 				8C79572C25EA56AF00807591 /* Info.plist */,
+				8C79575925EA595900807591 /* TabBarController.swift */,
 			);
 			path = "LastFM-App";
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C79572325EA56AD00807591 /* ViewController.swift in Sources */,
+				8C79575A25EA595900807591 /* TabBarController.swift in Sources */,
 				8C79571F25EA56AD00807591 /* AppDelegate.swift in Sources */,
 				8C79572125EA56AD00807591 /* SceneDelegate.swift in Sources */,
 			);
