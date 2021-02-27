@@ -39,14 +39,16 @@ class ArtistAlbumCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupAlbumImageView() {
+        albumImageView.image = UIImage(systemName: "music.note")
+        
         contentView.addSubview(albumImageView)
         albumImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             albumImageView.heightAnchor.constraint(equalToConstant: 64),
             albumImageView.widthAnchor.constraint(equalToConstant: 64),
             albumImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            albumImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 8),
-            albumImageView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -8),
+            albumImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16),
+            albumImageView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16),
         ])
     }
     
@@ -54,13 +56,16 @@ class ArtistAlbumCollectionViewCell: UICollectionViewCell {
         titleLabel.text = ""
         titleLabel.textColor = .darkText
         titleLabel.font = .boldSystemFont(ofSize: 14)
+        titleLabel.numberOfLines = 2
+        titleLabel.textAlignment = .center
         
         contentView.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: albumImageView.bottomAnchor, constant: 4),
             titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
-            titleLabel.centerXAnchor.constraint(equalTo: albumImageView.centerXAnchor)
+            titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor),
         ])
     }
     
