@@ -60,7 +60,7 @@ class ArtistTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             listenersCountLabel.topAnchor.constraint(equalTo: artistNameLabel.bottomAnchor, constant: 4),
             listenersCountLabel.leftAnchor.constraint(equalTo: artistNameLabel.leftAnchor),
-            listenersCountLabel.leftAnchor.constraint(equalTo: artistNameLabel.rightAnchor),
+            listenersCountLabel.rightAnchor.constraint(equalTo: artistNameLabel.rightAnchor),
             listenersCountLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
         ])
     }
