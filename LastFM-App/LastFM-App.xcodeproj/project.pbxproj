@@ -20,6 +20,7 @@
 		8C79577B25EA8D1800807591 /* SearchTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79577A25EA8D1800807591 /* SearchTableViewControllerTests.swift */; };
 		8C79578425EA91DF00807591 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79578325EA91DF00807591 /* TestHelpers.swift */; };
 		8C79579025EA979900807591 /* ArtistAlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79578F25EA979900807591 /* ArtistAlbumCollectionViewCell.swift */; };
+		8C79579925EAA93700807591 /* AlbumDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79579825EAA93700807591 /* AlbumDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		8C79577A25EA8D1800807591 /* SearchTableViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewControllerTests.swift; sourceTree = "<group>"; };
 		8C79578325EA91DF00807591 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		8C79578F25EA979900807591 /* ArtistAlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistAlbumCollectionViewCell.swift; sourceTree = "<group>"; };
+		8C79579825EAA93700807591 /* AlbumDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			children = (
 				8C79577425EA8A5000807591 /* ArtistAlbumsViewController.swift */,
 				8C79578E25EA977900807591 /* Cell */,
+				8C79579725EAA90A00807591 /* Album Details */,
 			);
 			path = "Artist Albums";
 			sourceTree = "<group>";
@@ -171,6 +174,14 @@
 				8C79578F25EA979900807591 /* ArtistAlbumCollectionViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		8C79579725EAA90A00807591 /* Album Details */ = {
+			isa = PBXGroup;
+			children = (
+				8C79579825EAA93700807591 /* AlbumDetailsViewController.swift */,
+			);
+			path = "Album Details";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +285,7 @@
 			files = (
 				8C79576325EA663100807591 /* SearchTableViewController.swift in Sources */,
 				8C79575A25EA595900807591 /* TabBarController.swift in Sources */,
+				8C79579925EAA93700807591 /* AlbumDetailsViewController.swift in Sources */,
 				8C79577525EA8A5000807591 /* ArtistAlbumsViewController.swift in Sources */,
 				8C79576C25EA7EBE00807591 /* ArtistTableViewCell.swift in Sources */,
 				8C79579025EA979900807591 /* ArtistAlbumCollectionViewCell.swift in Sources */,
