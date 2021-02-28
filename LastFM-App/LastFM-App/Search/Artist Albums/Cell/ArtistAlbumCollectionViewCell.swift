@@ -84,4 +84,10 @@ class ArtistAlbumCollectionViewCell: UICollectionViewCell {
         guard let imageUrlString = viewModel?.imageUrlString, let imageUrl = URL(string: imageUrlString) else { return }
         albumImageView.af.setImage(withURL: imageUrl, placeholderImage: UIImage(systemName: "music.note"))
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        titleLabel.text = ""
+        albumImageView.image = UIImage(systemName: "music.note")
+    }
 }
