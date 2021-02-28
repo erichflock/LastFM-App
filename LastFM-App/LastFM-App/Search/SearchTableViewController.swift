@@ -72,14 +72,14 @@ extension SearchTableViewController  {
 extension SearchTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Did Select Row At \(indexPath.row)")
-        let artistAlbumsViewController = ArtistAlbumsViewController(artistName: "")
+        guard let artist = getArtist(row: indexPath.row) else { return }
+        let artistAlbumsViewController = ArtistAlbumsViewController(artistName: artist.name)
         navigationController?.pushViewController(artistAlbumsViewController, animated: true)
     }
     
 }
 
-//Mapper
+//MARK: - Mapper
 extension SearchTableViewController {
     
     private func createArtists(artistsFromAPI: [ArtistAPIModel]?) -> [Artist]? {

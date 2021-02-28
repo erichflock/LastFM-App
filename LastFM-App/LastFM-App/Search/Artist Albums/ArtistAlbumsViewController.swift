@@ -10,6 +10,11 @@ import UIKit
 class ArtistAlbumsViewController: UIViewController {
     
     let artistName: String
+    var albums: [Album] = [] {
+        didSet {
+            collectionView?.reloadData()
+        }
+    }
     
     private var collectionView: UICollectionView?
     
@@ -25,6 +30,7 @@ class ArtistAlbumsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        loadAlbums()
     }
     
     private func setupUI() {
@@ -61,23 +67,56 @@ class ArtistAlbumsViewController: UIViewController {
 extension ArtistAlbumsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        albums.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArtistAlbumCollectionViewCell", for: indexPath) as? ArtistAlbumCollectionViewCell
-        cell?.viewModel = .init(imageUrlString: "", title: "Top Album")
+        if let album = getAlbum(item: indexPath.item) {
+            cell?.viewModel = .init(imageUrlString: album.imageURLString, title: album.name)
+        }
         return cell ?? UICollectionViewCell()
     }
     
+    private func getAlbum(item: Int) -> Album? {
+        guard albums.count >= item else { return nil }
+        return albums[item]
+    }
 }
 
 //MARK: - UICollectionViewDelegate
 extension ArtistAlbumsViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Did Select item at \(indexPath.item)")
-        let albumDetailsViewController = AlbumDetailsViewController(albumTitle: "Top Album", artistName: "Wesley Safadao")
-        navigationController?.pushViewController(albumDetailsViewController, animated: true)
+        if let album = getAlbum(item: indexPath.item) {
+            let albumDetailsViewController = AlbumDetailsViewController(albumTitle: album.name, artistName: album.artistName)
+            navigationController?.pushViewController(albumDetailsViewController, animated: true)
+        }
+    }
+}
+
+//MARK: - API Request
+extension ArtistAlbumsViewController {
+    
+    private func loadAlbums() {
+        AlbumAPIRequests.fetchAlbums(query: artistName, completion: { [weak self] albumsFromAPI in
+            guard let self = self else { return }
+            self.albums = self.createAlbums(albumsFromAPI: albumsFromAPI)
+        })
+    }
+}
+
+//MARK: - Mapper
+extension ArtistAlbumsViewController {
+
+    private func createAlbums(albumsFromAPI: [AlbumAPIModel]?) -> [Album] {
+        guard let albumsFromAPI = albumsFromAPI else { return [] }
+        var album: [Album] = []
+        for albumFromAPI in albumsFromAPI {
+            if let name = albumFromAPI.name, let image = albumFromAPI.image?.first(where: { $0.size == .medium }), let artistName = albumFromAPI.artist?.name {
+                album.append(.init(name: name, imageURLString: image.text ?? "", artistName: artistName))
+            }
+        }
+        return album
     }
 }

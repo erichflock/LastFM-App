@@ -9,12 +9,12 @@ import Alamofire
 
 class AlbumAPIRequests {
     
-    static func fetchAlbums(query: String, completion: @escaping ([Album]?) -> Void) {
+    static func fetchAlbums(query: String, completion: @escaping ([AlbumAPIModel]?) -> Void) {
         var parameters = Parameters()
         parameters["method"] = Config.artistTopAlbums
         parameters["api_key"] = ConfigKeys.APIKey
         parameters["format"] = Config.jsonFormat
-        parameters["artist"] = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
+        parameters["artist"] = query
         let url = Config.baseURL
         let request = AF.request(url, parameters: parameters)
         request.responseDecodable(of: AlbumsSearchResultRoot.self) { response in
@@ -24,7 +24,7 @@ class AlbumAPIRequests {
 
 }
 
-typealias Album = AlbumsSearchResultRoot.TopAlbums.Album
+typealias AlbumAPIModel = AlbumsSearchResultRoot.TopAlbums.Album
 
 struct AlbumsSearchResultRoot: Codable {
     
@@ -41,6 +41,11 @@ struct AlbumsSearchResultRoot: Codable {
         struct Album: Codable {
             var name: String?
             var image: [ImageTypeAPIModel]?
+            var artist: Artist?
+            
+            struct Artist: Codable {
+                var name: String?
+            }
         }
         
         enum CodingKeys: String, CodingKey {
