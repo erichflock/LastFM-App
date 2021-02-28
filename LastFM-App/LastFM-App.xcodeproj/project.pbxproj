@@ -225,7 +225,6 @@
 			isa = PBXGroup;
 			children = (
 				8C8C9D7C25EB809B005FDF4A /* ArtistiAPIRequests.swift */,
-				8C8C9D8625EB9AB6005FDF4A /* ConfigURL.swift */,
 				8C8C9D8625EB9AB6005FDF4A /* Config.swift */,
 			);
 			path = Network;
