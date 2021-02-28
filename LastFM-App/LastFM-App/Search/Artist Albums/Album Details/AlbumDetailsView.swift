@@ -12,7 +12,8 @@ class AlbumDetailView: UIView, UITableViewDataSource {
     struct ViewModel {
         var albumTitle: String
         var artistName: String
-        var tracks: [String]
+        var tracks: [Album.Track]
+        var imageUrlString: String?
     }
     
     override init(frame: CGRect) {
@@ -29,6 +30,12 @@ class AlbumDetailView: UIView, UITableViewDataSource {
     private let albumTitleLabel = UILabel()
     private let artistNameLabel = UILabel()
     private let tracksTableView = UITableView()
+    
+    private var tracks: [Album.Track] = [] {
+        didSet {
+            tracksTableView.reloadData()
+        }
+    }
     
     var viewModel: ViewModel? {
         didSet {
@@ -102,23 +109,51 @@ class AlbumDetailView: UIView, UITableViewDataSource {
     }
     
     private func updateUI() {
-        
+        updateAlbumImageView()
+        updateAlbumTitleLabel()
+        updateArtistNameLabel()
+        updateTracks()
     }
-
+    
+    private func updateAlbumImageView() {
+        guard let imageUrlString = viewModel?.imageUrlString, let imageUrl = URL(string: imageUrlString) else { return }
+        albumImageView.af.setImage(withURL: imageUrl, placeholderImage: UIImage(systemName: "music.note"))
+    }
+    
+    private func updateAlbumTitleLabel() {
+        guard let title = viewModel?.albumTitle else { return }
+        albumTitleLabel.text = title
+    }
+    
+    private func updateArtistNameLabel() {
+        guard let artistName = viewModel?.artistName else { return }
+        artistNameLabel.text = artistName
+    }
+    
+    private func updateTracks() {
+        guard let updatedTracks = viewModel?.tracks else { return }
+        tracks = updatedTracks
+    }
 }
 
 //MARK: - UITableViewDataSource
 extension AlbumDetailView {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        tracks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = "Track 1"
+        if let track = getTrack(for: indexPath) {
+            cell.textLabel?.text = track.name
+        }
         return cell
     }
     
+    private func getTrack(for indexPath: IndexPath) -> Album.Track? {
+        guard indexPath.row <= tracks.count else { return nil }
+        return tracks[indexPath.row]
+    }
 }
 

@@ -27,6 +27,7 @@ class AlbumDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupAlbumDetailView()
+        loadAlbum()
     }
     
     func setupTitle() {
@@ -42,5 +43,38 @@ class AlbumDetailsViewController: UIViewController {
             albumDetailView.leftAnchor.constraint(equalTo: view.leftAnchor),
             albumDetailView.rightAnchor.constraint(equalTo: view.rightAnchor)
         ])
+    }
+}
+
+//MARK: - API Request
+extension AlbumDetailsViewController {
+    
+    private func loadAlbum() {
+        AlbumAPIRequests.fetchAlbumInformation(albumName: albumTitle, artistName: artistName, completion: { [weak self] albumAPIModel in
+            guard let self = self else { return }
+            self.albumDetailView.viewModel = self.createAlbumDetailViewModel(albumFromAPI: albumAPIModel)
+        })
+    }
+}
+
+//MARK: - Mapper
+extension AlbumDetailsViewController {
+
+    private func createAlbumDetailViewModel(albumFromAPI: AlbumInformation?) -> AlbumDetailView.ViewModel? {
+        guard let albumFromAPI = albumFromAPI else { return nil }
+        if let title = albumFromAPI.name, let artistName = albumFromAPI.artist, let tracks = albumFromAPI.tracks?.tracks, let image = albumFromAPI.image?.first(where: { $0.size == .large }) {
+            return .init(albumTitle: title, artistName: artistName, tracks: mapTracks(albumTracksAPI: tracks), imageUrlString: image.text ?? "")
+        }
+        return nil
+    }
+
+    private func mapTracks(albumTracksAPI: [AlbumInformation.AlbumTracks.Track]) -> [Album.Track] {
+        var tracks: [Album.Track] = []
+        for trackAPI in albumTracksAPI {
+            if let name = trackAPI.name {
+                tracks.append(.init(name: name))
+            }
+        }
+        return tracks
     }
 }
