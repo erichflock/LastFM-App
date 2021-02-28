@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class ArtistAlbumCollectionViewCell: UICollectionViewCell {
     
@@ -55,7 +56,7 @@ class ArtistAlbumCollectionViewCell: UICollectionViewCell {
     private func setupTitleLabel() {
         titleLabel.text = ""
         titleLabel.textColor = .darkText
-        titleLabel.font = .boldSystemFont(ofSize: 14)
+        titleLabel.font = .boldSystemFont(ofSize: 12)
         titleLabel.numberOfLines = 2
         titleLabel.textAlignment = .center
         
@@ -70,7 +71,17 @@ class ArtistAlbumCollectionViewCell: UICollectionViewCell {
     }
     
     private func updateUI() {
-        guard let viewModel = viewModel else { return }
-        titleLabel.text = viewModel.title
+        updateTitleLabel()
+        updateAlbumImageView()
+    }
+    
+    private func updateTitleLabel() {
+        guard let title = viewModel?.title else { return }
+        titleLabel.text = title
+    }
+    
+    private func updateAlbumImageView() {
+        guard let imageUrlString = viewModel?.imageUrlString, let imageUrl = URL(string: imageUrlString) else { return }
+        albumImageView.af.setImage(withURL: imageUrl, placeholderImage: UIImage(systemName: "music.note"))
     }
 }
