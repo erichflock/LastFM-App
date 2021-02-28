@@ -224,8 +224,8 @@
 		8C8C9D7925EB7ED1005FDF4A /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				8C8C9DA225EBBB41005FDF4A /* Config Files */,
 				8C8C9D7C25EB809B005FDF4A /* ArtistiAPIRequests.swift */,
-				8C8C9D8625EB9AB6005FDF4A /* Config.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -246,6 +246,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		8C8C9DA225EBBB41005FDF4A /* Config Files */ = {
+			isa = PBXGroup;
+			children = (
+				8C8C9D8625EB9AB6005FDF4A /* Config.swift */,
+			);
+			path = "Config Files";
+			sourceTree = "<group>";
 		DF0E16E119F4BCE4D4F9A1D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
