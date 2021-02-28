@@ -9,7 +9,7 @@ import Alamofire
 
 class ArtistAPIRequests {
     
-    static func fetchArtist(query: String, completion: @escaping ([ArtistAPIModel]?) -> Void) {
+    static func fetchArtists(query: String, completion: @escaping ([ArtistAPIModel]?) -> Void) {
         var parameters = Parameters()
         parameters["method"] = "artist.search"
         parameters["api_key"] = ConfigKeys.APIKey
