@@ -23,7 +23,7 @@
 		8C79579925EAA93700807591 /* AlbumDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79579825EAA93700807591 /* AlbumDetailsViewController.swift */; };
 		8C79579D25EAB59C00807591 /* AlbumDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79579C25EAB59C00807591 /* AlbumDetailsView.swift */; };
 		8C8C9D7D25EB809B005FDF4A /* ArtistiAPIRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8C9D7C25EB809B005FDF4A /* ArtistiAPIRequests.swift */; };
-		8C8C9D8725EB9AB6005FDF4A /* ConfigURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8C9D8625EB9AB6005FDF4A /* ConfigURL.swift */; };
+		8C8C9D8725EB9AB6005FDF4A /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8C9D8625EB9AB6005FDF4A /* Config.swift */; };
 		8C8C9D9425EBA699005FDF4A /* CaseIterableDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8C9D9325EBA699005FDF4A /* CaseIterableDefault.swift */; };
 		8C8C9D9D25EBA9CB005FDF4A /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8C9D9C25EBA9CB005FDF4A /* Artist.swift */; };
 		B06FC8A00207BA5EA3DA4DB6 /* Pods_LastFM_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F31A8E15D1F51890428DACC4 /* Pods_LastFM_App.framework */; };
@@ -63,7 +63,7 @@
 		8C79579825EAA93700807591 /* AlbumDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsViewController.swift; sourceTree = "<group>"; };
 		8C79579C25EAB59C00807591 /* AlbumDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsView.swift; sourceTree = "<group>"; };
 		8C8C9D7C25EB809B005FDF4A /* ArtistiAPIRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistiAPIRequests.swift; sourceTree = "<group>"; };
-		8C8C9D8625EB9AB6005FDF4A /* ConfigURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigURL.swift; sourceTree = "<group>"; };
+		8C8C9D8625EB9AB6005FDF4A /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		8C8C9D9325EBA699005FDF4A /* CaseIterableDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseIterableDefault.swift; sourceTree = "<group>"; };
 		8C8C9D9C25EBA9CB005FDF4A /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		8DCE4E00D0A491B213735C78 /* Pods_LastFM_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LastFM_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -226,6 +226,7 @@
 			children = (
 				8C8C9D7C25EB809B005FDF4A /* ArtistiAPIRequests.swift */,
 				8C8C9D8625EB9AB6005FDF4A /* ConfigURL.swift */,
+				8C8C9D8625EB9AB6005FDF4A /* Config.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -433,7 +434,7 @@
 				8C8C9D7D25EB809B005FDF4A /* ArtistiAPIRequests.swift in Sources */,
 				8C79571F25EA56AD00807591 /* AppDelegate.swift in Sources */,
 				8C79572125EA56AD00807591 /* SceneDelegate.swift in Sources */,
-				8C8C9D8725EB9AB6005FDF4A /* ConfigURL.swift in Sources */,
+				8C8C9D8725EB9AB6005FDF4A /* Config.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
