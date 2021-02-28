@@ -29,6 +29,7 @@ class AlbumDetailView: UIView, UITableViewDataSource {
     private let albumImageView = UIImageView()
     private let albumTitleLabel = UILabel()
     private let artistNameLabel = UILabel()
+    private let saveButton = UIButton()
     private let tracksTableView = UITableView()
     
     private var tracks: [Album.Track] = [] {
@@ -46,6 +47,7 @@ class AlbumDetailView: UIView, UITableViewDataSource {
     private func setupUI() {
         setupAlbumImageView()
         setupAlbumTitleLabel()
+        setupSaveButton()
         setupArtistNameLabel()
         setupTracksTableView()
     }
@@ -74,8 +76,7 @@ class AlbumDetailView: UIView, UITableViewDataSource {
         albumTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             albumTitleLabel.topAnchor.constraint(equalTo: albumImageView.bottomAnchor, constant: 8),
-            albumTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 8),
-            albumTitleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -8),
+            albumTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 8)
         ])
     }
     
@@ -92,6 +93,25 @@ class AlbumDetailView: UIView, UITableViewDataSource {
             artistNameLabel.topAnchor.constraint(equalTo: albumTitleLabel.bottomAnchor, constant: 4),
             artistNameLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 8),
             artistNameLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -8),
+        ])
+    }
+    
+    private func setupSaveButton() {
+        let unselectedImage = UIImage(systemName: "heart")
+        let selectedImage = UIImage(systemName: "heart.fill")
+        saveButton.setImage(unselectedImage, for: .normal)
+        saveButton.setImage(selectedImage, for: .selected)
+        saveButton.tintColor = .black
+        saveButton.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
+        
+        addSubview(saveButton)
+        saveButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            saveButton.heightAnchor.constraint(equalToConstant: 50),
+            saveButton.widthAnchor.constraint(equalToConstant: 50),
+            saveButton.centerYAnchor.constraint(equalTo: albumTitleLabel.centerYAnchor),
+            saveButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -8),
+            saveButton.leftAnchor.constraint(greaterThanOrEqualTo: albumTitleLabel.rightAnchor)
         ])
     }
     
@@ -133,6 +153,11 @@ class AlbumDetailView: UIView, UITableViewDataSource {
     private func updateTracks() {
         guard let updatedTracks = viewModel?.tracks else { return }
         tracks = updatedTracks
+    }
+    
+    @objc private func didTapSaveButton() {
+        saveButton.isSelected = saveButton.isSelected ? false : true
+        saveButton.tintColor = saveButton.isSelected ? .red : .black
     }
 }
 
