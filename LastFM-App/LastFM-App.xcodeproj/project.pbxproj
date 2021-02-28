@@ -253,6 +253,7 @@
 			);
 			path = "Config Files";
 			sourceTree = "<group>";
+		};
 		DF0E16E119F4BCE4D4F9A1D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
