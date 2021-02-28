@@ -21,7 +21,20 @@ class AlbumAPIRequests {
             completion(response.value?.topAlbums?.albums)
         }
     }
-
+    
+    static func fetchAlbumInformation(albumName: String, artistName: String, completion: @escaping (AlbumInformation?) -> Void) {
+        var parameters = Parameters()
+        parameters["method"] = Config.methodAlbumGetInfo
+        parameters["api_key"] = ConfigKeys.APIKey
+        parameters["format"] = Config.jsonFormat
+        parameters["artist"] = artistName
+        parameters["album"] = albumName
+        let url = Config.baseURL
+        let request = AF.request(url, parameters: parameters)
+        request.responseDecodable(of: AlbumInformationResultRoot.self) { response in
+            completion(response.value?.albumInformation)
+        }
+    }
 }
 
 typealias AlbumAPIModel = AlbumsSearchResultRoot.TopAlbums.Album
@@ -51,5 +64,36 @@ struct AlbumsSearchResultRoot: Codable {
         enum CodingKeys: String, CodingKey {
             case albums = "album"
         }
+    }
+}
+
+typealias AlbumInformation = AlbumInformationResultRoot.AlbumInformation
+
+struct AlbumInformationResultRoot: Codable {
+    
+    var albumInformation: AlbumInformation?
+    
+    struct AlbumInformation: Codable {
+        var name: String?
+        var artist: String?
+        var image: [ImageTypeAPIModel]?
+        var tracks: AlbumTracks?
+        
+        struct AlbumTracks: Codable {
+            var tracks: [Track]
+            
+            struct Track: Codable {
+                var name: String?
+            }
+            
+            enum CodingKeys: String, CodingKey {
+                case tracks = "track"
+            }
+        }
+
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case albumInformation = "album"
     }
 }
