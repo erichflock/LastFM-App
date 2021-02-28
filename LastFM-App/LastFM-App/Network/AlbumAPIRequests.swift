@@ -40,7 +40,7 @@ struct AlbumsSearchResultRoot: Codable {
         
         struct Album: Codable {
             var name: String?
-            var image: [ImageType]?
+            var image: [ImageTypeAPIModel]?
         }
         
         enum CodingKeys: String, CodingKey {

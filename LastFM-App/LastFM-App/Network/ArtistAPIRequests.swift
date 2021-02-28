@@ -40,7 +40,7 @@ struct ArtistSearchResultRoot: Codable {
             struct Artist: Codable {
                 var name: String?
                 var listeners: String?
-                var image: [ImageType]?
+                var image: [ImageTypeAPIModel]?
             }
             
             enum CodingKeys: String, CodingKey {
@@ -54,17 +54,3 @@ struct ArtistSearchResultRoot: Codable {
     }
 }
 
-struct ImageType: Codable {
-    var text: String?
-    var size: Size
-    
-    enum Size: String, Codable, CaseIterableDefault {
-        case small, medium, large, extralarge, mega, unknown
-        static var defaultValue = unknown
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case text = "#text"
-        case size
-    }
-}
