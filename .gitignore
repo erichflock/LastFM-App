@@ -2,3 +2,4 @@
 *.xcuserstate
 LastFM-App/LastFM-App/Network/ConfigKeys.swift
 LastFM-App/LastFM-App/Network/Config Files/ConfigKeys.swift
+*.xcbkptlist
