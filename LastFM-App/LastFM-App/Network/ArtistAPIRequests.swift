@@ -41,21 +41,6 @@ struct ArtistSearchResultRoot: Codable {
                 var name: String?
                 var listeners: String?
                 var image: [ImageType]?
-                
-                struct ImageType: Codable {
-                    var text: String?
-                    var size: Size
-                    
-                    enum Size: String, Codable, CaseIterableDefault {
-                        case small, medium, large, extralarge, mega, unknown
-                        static var defaultValue = unknown
-                    }
-                    
-                    enum CodingKeys: String, CodingKey {
-                        case text = "#text"
-                        case size
-                    }
-                }
             }
             
             enum CodingKeys: String, CodingKey {
@@ -66,5 +51,20 @@ struct ArtistSearchResultRoot: Codable {
         enum CodingKeys: String, CodingKey {
             case artistMatches = "artistmatches"
         }
+    }
+}
+
+struct ImageType: Codable {
+    var text: String?
+    var size: Size
+    
+    enum Size: String, Codable, CaseIterableDefault {
+        case small, medium, large, extralarge, mega, unknown
+        static var defaultValue = unknown
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case text = "#text"
+        case size
     }
 }
