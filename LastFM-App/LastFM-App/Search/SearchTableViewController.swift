@@ -10,6 +10,11 @@ import UIKit
 class SearchTableViewController: UITableViewController {
     
     private let searchController = UISearchController()
+    private var artists: [Artist] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +39,11 @@ class SearchTableViewController: UITableViewController {
 extension SearchTableViewController: UISearchBarDelegate {
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        guard let artistName = searchBar.text else { return }
+        ArtistAPIRequests.fetchArtists(query: artistName, completion: { [weak self] artistsFromApi in
+            guard let self = self else { return }
+            self.artists = self.createArtists(artistsFromAPI: artistsFromApi) ?? []
+        })
     }
 }
 
@@ -41,15 +51,21 @@ extension SearchTableViewController: UISearchBarDelegate {
 extension SearchTableViewController  {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return artists.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ArtistTableViewCell", for: indexPath) as? ArtistTableViewCell
-        cell?.viewModel = .init(name: "Wesley Safadao", listenersCount: 1000)
+        if let artist = getArtist(row: indexPath.row) {
+            cell?.viewModel = .init(name: artist.name, listenersCount: artist.listeners)
+        }
         return cell ?? UITableViewCell()
     }
     
+    private func getArtist(row: Int) -> Artist? {
+        guard artists.count >= row else { return nil }
+        return artists[row]
+    }
 }
 
 //MARK: - UITableViewDelegate
@@ -61,4 +77,19 @@ extension SearchTableViewController {
         navigationController?.pushViewController(artistAlbumsViewController, animated: true)
     }
     
+}
+
+//Mapper
+extension SearchTableViewController {
+    
+    private func createArtists(artistsFromAPI: [ArtistAPIModel]?) -> [Artist]? {
+        guard let artistFromAPI = artistsFromAPI else { return nil }
+        var artists: [Artist] = []
+        for artistFromAPI in artistFromAPI {
+            if let name = artistFromAPI.name, let listeners = artistFromAPI.listeners, let listenersConverted = Int(listeners) {
+                artists.append(.init(name: name, listeners: listenersConverted))
+            }
+        }
+        return artists
+    }
 }
