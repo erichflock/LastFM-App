@@ -70,4 +70,10 @@ class ArtistTableViewCell: UITableViewCell {
         artistNameLabel.text = viewModel.name
         listenersCountLabel.text = "Listeners: \(viewModel.listenersCount.description)"
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        artistNameLabel.text = ""
+        listenersCountLabel.text = ""
+    }
 }
