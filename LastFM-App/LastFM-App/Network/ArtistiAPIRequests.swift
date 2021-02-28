@@ -11,11 +11,11 @@ class ArtistAPIRequests {
     
     static func fetchArtists(query: String, completion: @escaping ([ArtistAPIModel]?) -> Void) {
         var parameters = Parameters()
-        parameters["method"] = "artist.search"
+        parameters["method"] = Config.artistSearch
         parameters["api_key"] = ConfigKeys.APIKey
-        parameters["format"] = "json"
+        parameters["format"] = Config.jsonFormat
         parameters["artist"] = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
-        let url = ConfigURL.baseURL
+        let url = Config.baseURL
         let request = AF.request(url, parameters: parameters)
         request.responseDecodable(of: ArtistSearchResultRoot.self) { response in
             completion(response.value?.results?.artistMatches?.artists)
