@@ -11,7 +11,7 @@ class AlbumAPIRequests {
     
     static func fetchAlbums(query: String, completion: @escaping ([AlbumAPIModel]?) -> Void) {
         var parameters = Parameters()
-        parameters["method"] = Config.artistTopAlbums
+        parameters["method"] = Config.methodArtistTopAlbums
         parameters["api_key"] = ConfigKeys.APIKey
         parameters["format"] = Config.jsonFormat
         parameters["artist"] = query

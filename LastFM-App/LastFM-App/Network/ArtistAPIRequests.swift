@@ -11,7 +11,7 @@ class ArtistAPIRequests {
     
     static func fetchArtists(query: String, completion: @escaping ([ArtistAPIModel]?) -> Void) {
         var parameters = Parameters()
-        parameters["method"] = Config.artistSearch
+        parameters["method"] = Config.methodArtistSearch
         parameters["api_key"] = ConfigKeys.APIKey
         parameters["format"] = Config.jsonFormat
         parameters["artist"] = query.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
