@@ -151,6 +151,7 @@
 				8C79575925EA595900807591 /* TabBarController.swift */,
 				8C8C9DCA25ED7412005FDF4A /* Library */,
 				8C79576125EA661400807591 /* Search */,
+				8C8C9DD825ED8B24005FDF4A /* Shared Views */,
 				8C8C9D9225EBA67C005FDF4A /* Utils */,
 			);
 			path = "LastFM-App";
@@ -232,7 +233,6 @@
 			isa = PBXGroup;
 			children = (
 				8C79579825EAA93700807591 /* AlbumDetailsViewController.swift */,
-				8C79579C25EAB59C00807591 /* AlbumDetailsView.swift */,
 			);
 			path = "Album Details";
 			sourceTree = "<group>";
@@ -305,6 +305,14 @@
 				8C8C9DD225ED7FC2005FDF4A /* LibraryAlbumDetailsViewController.swift */,
 			);
 			path = "Album Details";
+			sourceTree = "<group>";
+		};
+		8C8C9DD825ED8B24005FDF4A /* Shared Views */ = {
+			isa = PBXGroup;
+			children = (
+				8C79579C25EAB59C00807591 /* AlbumDetailsView.swift */,
+			);
+			path = "Shared Views";
 			sourceTree = "<group>";
 		};
 		DF0E16E119F4BCE4D4F9A1D6 /* Frameworks */ = {
