@@ -191,7 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				8C79577425EA8A5000807591 /* ArtistAlbumsViewController.swift */,
-				8C79578E25EA977900807591 /* Cell */,
 				8C79579725EAA90A00807591 /* Album Details */,
 			);
 			path = "Artist Albums";
@@ -221,12 +220,12 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
-		8C79578E25EA977900807591 /* Cell */ = {
+		8C79578E25EA977900807591 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				8C79578F25EA979900807591 /* ArtistAlbumCollectionViewCell.swift */,
 			);
-			path = Cell;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		8C79579725EAA90A00807591 /* Album Details */ = {
@@ -310,6 +309,7 @@
 		8C8C9DD825ED8B24005FDF4A /* Shared Views */ = {
 			isa = PBXGroup;
 			children = (
+				8C79578E25EA977900807591 /* Cells */,
 				8C79579C25EAB59C00807591 /* AlbumDetailsView.swift */,
 			);
 			path = "Shared Views";
