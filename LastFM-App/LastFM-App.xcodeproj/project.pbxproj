@@ -31,6 +31,7 @@
 		8C8C9DB725EBD8CC005FDF4A /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8C9DB625EBD8CC005FDF4A /* Album.swift */; };
 		8C8C9DBC25ED6384005FDF4A /* Albums.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8C8C9DBA25ED6384005FDF4A /* Albums.xcdatamodeld */; };
 		8C8C9DC125ED65BD005FDF4A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8C9DC025ED65BD005FDF4A /* CoreDataManager.swift */; };
+		8C8C9DCC25ED745F005FDF4A /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8C9DCB25ED745F005FDF4A /* LibraryViewController.swift */; };
 		B06FC8A00207BA5EA3DA4DB6 /* Pods_LastFM_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F31A8E15D1F51890428DACC4 /* Pods_LastFM_App.framework */; };
 		E59854A239203D10D810DC2A /* Pods_LastFM_AppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DCE4E00D0A491B213735C78 /* Pods_LastFM_AppTests.framework */; };
 /* End PBXBuildFile section */
@@ -76,6 +77,7 @@
 		8C8C9DB625EBD8CC005FDF4A /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		8C8C9DBB25ED6384005FDF4A /* Albums.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Albums.xcdatamodel; sourceTree = "<group>"; };
 		8C8C9DC025ED65BD005FDF4A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		8C8C9DCB25ED745F005FDF4A /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		8DCE4E00D0A491B213735C78 /* Pods_LastFM_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LastFM_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7AC7886551E7CC2B984BEBB /* Pods-LastFM-AppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LastFM-AppTests.release.xcconfig"; path = "Target Support Files/Pods-LastFM-AppTests/Pods-LastFM-AppTests.release.xcconfig"; sourceTree = "<group>"; };
 		DBBBDBC012503FA0AC72C8EB /* Pods-LastFM-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LastFM-App.release.xcconfig"; path = "Target Support Files/Pods-LastFM-App/Pods-LastFM-App.release.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				8C79572925EA56AF00807591 /* LaunchScreen.storyboard */,
 				8C79572C25EA56AF00807591 /* Info.plist */,
 				8C79575925EA595900807591 /* TabBarController.swift */,
+				8C8C9DCA25ED7412005FDF4A /* Library */,
 				8C79576125EA661400807591 /* Search */,
 				8C8C9D9225EBA67C005FDF4A /* Utils */,
 			);
@@ -283,6 +286,14 @@
 				8C8C9DC025ED65BD005FDF4A /* CoreDataManager.swift */,
 			);
 			path = "Local Database";
+			sourceTree = "<group>";
+		};
+		8C8C9DCA25ED7412005FDF4A /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				8C8C9DCB25ED745F005FDF4A /* LibraryViewController.swift */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 		DF0E16E119F4BCE4D4F9A1D6 /* Frameworks */ = {
@@ -466,6 +477,7 @@
 				8C8C9DC125ED65BD005FDF4A /* CoreDataManager.swift in Sources */,
 				8C8C9DB725EBD8CC005FDF4A /* Album.swift in Sources */,
 				8C79579925EAA93700807591 /* AlbumDetailsViewController.swift in Sources */,
+				8C8C9DCC25ED745F005FDF4A /* LibraryViewController.swift in Sources */,
 				8C79579D25EAB59C00807591 /* AlbumDetailsView.swift in Sources */,
 				8C79577525EA8A5000807591 /* ArtistAlbumsViewController.swift in Sources */,
 				8C8C9DBC25ED6384005FDF4A /* Albums.xcdatamodeld in Sources */,
