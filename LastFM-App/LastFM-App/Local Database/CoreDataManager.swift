@@ -57,7 +57,7 @@ class CoreDataManager {
     
     func deleteAlbum(album: Album) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "AlbumCoreData")
-        fetchRequest.predicate = NSPredicate(format: "name == %@", album.name as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "name == %@ AND artistName == %@", album.name, album.artistName)
 
         do {
             if let fetchedAlbums = try managedContext.fetch(fetchRequest) as? [AlbumCoreData] {
@@ -94,7 +94,7 @@ class CoreDataManager {
     
     private func isAlbumAlreadySaved(album: Album) -> Bool {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "AlbumCoreData")
-        fetchRequest.predicate = NSPredicate(format: "name == %@", album.name as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "name == %@ AND artistName == %@", album.name, album.artistName)
         do {
             if let fetchedAlbums = try managedContext.fetch(fetchRequest) as? [AlbumCoreData], !fetchedAlbums.isEmpty {
                 return true
