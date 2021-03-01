@@ -158,6 +158,15 @@ class AlbumDetailView: UIView, UITableViewDataSource {
     @objc private func didTapSaveButton() {
         saveButton.isSelected = saveButton.isSelected ? false : true
         saveButton.tintColor = saveButton.isSelected ? .red : .black
+        
+        if let name = viewModel?.albumTitle, let imageURLString = viewModel?.imageUrlString, let artistName = viewModel?.artistName {
+            let album: Album = .init(name: name, imageURLString: imageURLString, artistName: artistName, tracks: tracks)
+            if saveButton.isSelected {
+                CoreDataManager.shared.saveAlbum(newAlbum: album)
+            } else {
+                CoreDataManager.shared.deleteAlbum(album: album)
+            }
+        }
     }
 }
 
