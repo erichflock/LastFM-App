@@ -82,5 +82,9 @@ extension LibraryViewController: UICollectionViewDataSource {
 extension LibraryViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let album = getAlbum(item: indexPath.item) {
+            let albumDetailsViewController = LibraryAlbumDetailsViewController(album: album)
+            navigationController?.pushViewController(albumDetailsViewController, animated: true)
+        }
     }
 }

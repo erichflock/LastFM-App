@@ -81,7 +81,7 @@ class CoreDataManager {
                 
                 for fetchedAlbum in fetchedAlbums {
                     if let name = fetchedAlbum.name, let imageURLString = fetchedAlbum.imageURLString, let artistName = fetchedAlbum.artistName {
-                        let album: Album = .init(name: name, imageURLString: imageURLString, artistName: artistName, tracks: nil)
+                        let album: Album = .init(name: name, imageURLString: imageURLString, artistName: artistName, tracks: nil, isSaved: true)
                         albums.append(album)
                     }
                 }

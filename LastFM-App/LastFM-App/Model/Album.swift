@@ -10,6 +10,7 @@ struct Album {
     var imageURLString: String
     var artistName: String
     var tracks: [Track]?
+    var isSaved = false
     
     struct Track {
         var name: String

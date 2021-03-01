@@ -10,10 +10,7 @@ import UIKit
 class AlbumDetailView: UIView, UITableViewDataSource {
     
     struct ViewModel {
-        var albumTitle: String
-        var artistName: String
-        var tracks: [Album.Track]
-        var imageUrlString: String?
+        var album: Album
     }
     
     override init(frame: CGRect) {
@@ -44,6 +41,10 @@ class AlbumDetailView: UIView, UITableViewDataSource {
         }
     }
     
+    private var album: Album? {
+        return viewModel?.album
+    }
+    
     private func setupUI() {
         setupAlbumImageView()
         setupAlbumTitleLabel()
@@ -66,7 +67,7 @@ class AlbumDetailView: UIView, UITableViewDataSource {
     }
     
     private func setupAlbumTitleLabel() {
-        albumTitleLabel.text = "Miami Beach (2019)"
+        albumTitleLabel.text = ""
         albumTitleLabel.textColor = .darkText
         albumTitleLabel.font = .systemFont(ofSize: 20, weight: .bold)
         albumTitleLabel.numberOfLines = 1
@@ -81,7 +82,7 @@ class AlbumDetailView: UIView, UITableViewDataSource {
     }
     
     private func setupArtistNameLabel() {
-        artistNameLabel.text = "Wesley Safadao"
+        artistNameLabel.text = ""
         artistNameLabel.textColor = .darkText
         artistNameLabel.font = .systemFont(ofSize: 18, weight: .medium)
         artistNameLabel.numberOfLines = 1
@@ -133,39 +134,41 @@ class AlbumDetailView: UIView, UITableViewDataSource {
         updateAlbumTitleLabel()
         updateArtistNameLabel()
         updateTracks()
+        updateSaveButton()
     }
     
     private func updateAlbumImageView() {
-        guard let imageUrlString = viewModel?.imageUrlString, let imageUrl = URL(string: imageUrlString) else { return }
+        guard let imageUrlString = album?.imageURLString, let imageUrl = URL(string: imageUrlString) else { return }
         albumImageView.af.setImage(withURL: imageUrl, placeholderImage: UIImage(systemName: "music.note"))
     }
     
     private func updateAlbumTitleLabel() {
-        guard let title = viewModel?.albumTitle else { return }
+        guard let title = album?.name else { return }
         albumTitleLabel.text = title
     }
     
     private func updateArtistNameLabel() {
-        guard let artistName = viewModel?.artistName else { return }
+        guard let artistName = album?.artistName else { return }
         artistNameLabel.text = artistName
     }
     
     private func updateTracks() {
-        guard let updatedTracks = viewModel?.tracks else { return }
+        guard let updatedTracks = album?.tracks else { return }
         tracks = updatedTracks
+    }
+    
+    private func updateSaveButton() {
+        let isSaved = album?.isSaved ?? false
+        saveButton.isSelected = isSaved ? true : false
+        saveButton.tintColor = saveButton.isSelected ? .red : .black
     }
     
     @objc private func didTapSaveButton() {
         saveButton.isSelected = saveButton.isSelected ? false : true
         saveButton.tintColor = saveButton.isSelected ? .red : .black
         
-        if let name = viewModel?.albumTitle, let imageURLString = viewModel?.imageUrlString, let artistName = viewModel?.artistName {
-            let album: Album = .init(name: name, imageURLString: imageURLString, artistName: artistName, tracks: tracks)
-            if saveButton.isSelected {
-                CoreDataManager.shared.saveAlbum(newAlbum: album)
-            } else {
-                CoreDataManager.shared.deleteAlbum(album: album)
-            }
+        if let album = album {
+            saveButton.isSelected ? CoreDataManager.shared.saveAlbum(newAlbum: album) : CoreDataManager.shared.deleteAlbum(album: album)
         }
     }
 }

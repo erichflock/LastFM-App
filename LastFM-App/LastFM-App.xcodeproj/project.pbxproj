@@ -32,6 +32,7 @@
 		8C8C9DBC25ED6384005FDF4A /* Albums.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8C8C9DBA25ED6384005FDF4A /* Albums.xcdatamodeld */; };
 		8C8C9DC125ED65BD005FDF4A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8C9DC025ED65BD005FDF4A /* CoreDataManager.swift */; };
 		8C8C9DCC25ED745F005FDF4A /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8C9DCB25ED745F005FDF4A /* LibraryViewController.swift */; };
+		8C8C9DD325ED7FC2005FDF4A /* LibraryAlbumDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8C9DD225ED7FC2005FDF4A /* LibraryAlbumDetailsViewController.swift */; };
 		B06FC8A00207BA5EA3DA4DB6 /* Pods_LastFM_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F31A8E15D1F51890428DACC4 /* Pods_LastFM_App.framework */; };
 		E59854A239203D10D810DC2A /* Pods_LastFM_AppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DCE4E00D0A491B213735C78 /* Pods_LastFM_AppTests.framework */; };
 /* End PBXBuildFile section */
@@ -78,6 +79,7 @@
 		8C8C9DBB25ED6384005FDF4A /* Albums.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Albums.xcdatamodel; sourceTree = "<group>"; };
 		8C8C9DC025ED65BD005FDF4A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		8C8C9DCB25ED745F005FDF4A /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
+		8C8C9DD225ED7FC2005FDF4A /* LibraryAlbumDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryAlbumDetailsViewController.swift; sourceTree = "<group>"; };
 		8DCE4E00D0A491B213735C78 /* Pods_LastFM_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LastFM_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7AC7886551E7CC2B984BEBB /* Pods-LastFM-AppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LastFM-AppTests.release.xcconfig"; path = "Target Support Files/Pods-LastFM-AppTests/Pods-LastFM-AppTests.release.xcconfig"; sourceTree = "<group>"; };
 		DBBBDBC012503FA0AC72C8EB /* Pods-LastFM-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LastFM-App.release.xcconfig"; path = "Target Support Files/Pods-LastFM-App/Pods-LastFM-App.release.xcconfig"; sourceTree = "<group>"; };
@@ -292,8 +294,17 @@
 			isa = PBXGroup;
 			children = (
 				8C8C9DCB25ED745F005FDF4A /* LibraryViewController.swift */,
+				8C8C9DD125ED7F9B005FDF4A /* Album Details */,
 			);
 			path = Library;
+			sourceTree = "<group>";
+		};
+		8C8C9DD125ED7F9B005FDF4A /* Album Details */ = {
+			isa = PBXGroup;
+			children = (
+				8C8C9DD225ED7FC2005FDF4A /* LibraryAlbumDetailsViewController.swift */,
+			);
+			path = "Album Details";
 			sourceTree = "<group>";
 		};
 		DF0E16E119F4BCE4D4F9A1D6 /* Frameworks */ = {
@@ -471,6 +482,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C8C9DD325ED7FC2005FDF4A /* LibraryAlbumDetailsViewController.swift in Sources */,
 				8C79576325EA663100807591 /* SearchTableViewController.swift in Sources */,
 				8C79575A25EA595900807591 /* TabBarController.swift in Sources */,
 				8C8C9DAD25EBD7EA005FDF4A /* ImageTypeAPIModel.swift in Sources */,

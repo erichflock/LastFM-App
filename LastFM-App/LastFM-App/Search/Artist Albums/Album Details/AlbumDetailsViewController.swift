@@ -63,7 +63,7 @@ extension AlbumDetailsViewController {
     private func createAlbumDetailViewModel(albumFromAPI: AlbumInformation?) -> AlbumDetailView.ViewModel? {
         guard let albumFromAPI = albumFromAPI else { return nil }
         if let title = albumFromAPI.name, let artistName = albumFromAPI.artist, let tracks = albumFromAPI.tracks?.tracks, let image = albumFromAPI.image?.first(where: { $0.size == .large }) {
-            return .init(albumTitle: title, artistName: artistName, tracks: mapTracks(albumTracksAPI: tracks), imageUrlString: image.text ?? "")
+            return .init(album: .init(name: title, imageURLString: image.text ?? "", artistName: artistName, tracks: mapTracks(albumTracksAPI: tracks)))
         }
         return nil
     }
