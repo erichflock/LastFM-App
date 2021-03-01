@@ -55,7 +55,7 @@ class ArtistAlbumCollectionViewCell: UICollectionViewCell {
     
     private func setupTitleLabel() {
         titleLabel.text = ""
-        titleLabel.textColor = .white
+        titleLabel.textColor = .darkText
         titleLabel.font = .boldSystemFont(ofSize: 12)
         titleLabel.numberOfLines = 2
         titleLabel.textAlignment = .center
