@@ -26,10 +26,10 @@ class TabBarController: UITabBarController {
     }
     
     private func addViewControllersToTabBar() {
-        viewControllers = [createNavigationController(for: UIViewController(), title: "Home", image: UIImage(systemName: "music.note.house.fill")), createNavigationController(for: SearchTableViewController(), title: "Search", image: UIImage(systemName: "magnifyingglass.circle.fill"))]
+        viewControllers = [createNavigationController(for: LibraryViewController(), image: UIImage(systemName: "music.note.house.fill")), createNavigationController(for: SearchTableViewController(), image: UIImage(systemName: "magnifyingglass.circle.fill"))]
     }
     
-    private func createNavigationController(for viewController: UIViewController, title: String, image: UIImage?) -> UINavigationController {
+    private func createNavigationController(for viewController: UIViewController, image: UIImage?) -> UINavigationController {
         let navigationController = UINavigationController(rootViewController: viewController)
         viewController.navigationItem.title = title
         navigationController.tabBarItem.title = title

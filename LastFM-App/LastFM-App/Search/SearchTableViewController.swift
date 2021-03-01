@@ -18,8 +18,13 @@ class SearchTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTitle()
         setupSearchController()
         setupTableView()
+    }
+    
+    private func setupTitle() {
+        title = "Search"
     }
     
     private func setupSearchController() {
