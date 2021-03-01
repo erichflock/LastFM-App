@@ -13,7 +13,7 @@ class CoreDataManager {
     
     private init() {}
     
-    lazy var persistentContainer: NSPersistentContainer = {
+    private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Albums")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
@@ -23,11 +23,14 @@ class CoreDataManager {
         return container
     }()
     
-    func saveContext () {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
+    private var managedContext: NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
+    
+    private func saveContext () {
+        if managedContext.hasChanges {
             do {
-                try context.save()
+                try managedContext.save()
             } catch {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
@@ -36,8 +39,8 @@ class CoreDataManager {
     }
     
     func saveAlbum(newAlbum: Album) {
-      
-        let managedContext = persistentContainer.viewContext
+        guard isAlbumAlreadySaved(album: newAlbum) == false else { return }
+        
         let entity = NSEntityDescription.entity(forEntityName: "AlbumCoreData", in: managedContext)!
       
         let album = NSManagedObject(entity: entity, insertInto: managedContext)
@@ -53,7 +56,6 @@ class CoreDataManager {
     }
     
     func deleteAlbum(album: Album) {
-        let managedContext = persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "AlbumCoreData")
         fetchRequest.predicate = NSPredicate(format: "name == %@", album.name as CVarArg)
 
@@ -70,8 +72,6 @@ class CoreDataManager {
     }
     
     func fetchAlbums() -> [Album] {
-        
-        let managedContext = persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "AlbumCoreData")
 
         var albums: [Album] = []
@@ -90,5 +90,18 @@ class CoreDataManager {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
         return albums
+    }
+    
+    private func isAlbumAlreadySaved(album: Album) -> Bool {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "AlbumCoreData")
+        fetchRequest.predicate = NSPredicate(format: "name == %@", album.name as CVarArg)
+        do {
+            if let fetchedAlbums = try managedContext.fetch(fetchRequest) as? [AlbumCoreData], !fetchedAlbums.isEmpty {
+                return true
+            }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        return false
     }
 }
