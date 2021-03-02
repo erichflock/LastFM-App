@@ -4,8 +4,14 @@
         <attribute name="artistName" optional="YES" attributeType="String"/>
         <attribute name="imageURLString" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TrackCoreData" inverseName="album" inverseEntity="TrackCoreData"/>
+    </entity>
+    <entity name="TrackCoreData" representedClassName="TrackCoreData" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AlbumCoreData" inverseName="tracks" inverseEntity="AlbumCoreData"/>
     </entity>
     <elements>
-        <element name="AlbumCoreData" positionX="-63" positionY="-9" width="128" height="74"/>
+        <element name="AlbumCoreData" positionX="-63" positionY="-9" width="128" height="89"/>
+        <element name="TrackCoreData" positionX="-36" positionY="45" width="128" height="59"/>
     </elements>
 </model>

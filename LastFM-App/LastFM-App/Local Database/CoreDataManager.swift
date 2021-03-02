@@ -41,12 +41,20 @@ class CoreDataManager {
     func saveAlbum(newAlbum: Album) {
         guard isAlbumAlreadySaved(album: newAlbum) == false else { return }
         
-        let entity = NSEntityDescription.entity(forEntityName: "AlbumCoreData", in: managedContext)!
+        let albumEntity = NSEntityDescription.entity(forEntityName: "AlbumCoreData", in: managedContext)!
+        let trackEntity = NSEntityDescription.entity(forEntityName: "TrackCoreData", in: managedContext)!
       
-        let album = NSManagedObject(entity: entity, insertInto: managedContext)
+        let album = NSManagedObject(entity: albumEntity, insertInto: managedContext) as! AlbumCoreData
         album.setValue(newAlbum.name, forKeyPath: "name")
         album.setValue(newAlbum.artistName, forKeyPath: "artistName")
         album.setValue(newAlbum.imageURLString, forKeyPath: "imageURLString")
+        if let tracks = newAlbum.tracks {
+            for track in tracks {
+                let trackCoreData = NSManagedObject(entity: trackEntity, insertInto: managedContext) as! TrackCoreData
+                trackCoreData.setValue(track.name, forKeyPath: "name")
+                album.addToTracks(trackCoreData)
+            }
+        }
       
         do {
             try managedContext.save()
@@ -80,8 +88,8 @@ class CoreDataManager {
             if let fetchedAlbums = try managedContext.fetch(fetchRequest) as? [AlbumCoreData] {
                 
                 for fetchedAlbum in fetchedAlbums {
-                    if let name = fetchedAlbum.name, let imageURLString = fetchedAlbum.imageURLString, let artistName = fetchedAlbum.artistName {
-                        let album: Album = .init(name: name, imageURLString: imageURLString, artistName: artistName, tracks: nil, isSaved: true)
+                    if let name = fetchedAlbum.name, let imageURLString = fetchedAlbum.imageURLString, let artistName = fetchedAlbum.artistName, let tracks = fetchedAlbum.tracks?.allObjects as? [TrackCoreData] {
+                        let album: Album = .init(name: name, imageURLString: imageURLString, artistName: artistName, tracks: mapTracksCoreDataToTracks(tracks), isSaved: true)
                         albums.append(album)
                     }
                 }
@@ -104,4 +112,15 @@ class CoreDataManager {
         }
         return false
     }
+    
+    private func mapTracksCoreDataToTracks(_ tracksCoreData: [TrackCoreData]) -> [Album.Track] {
+        var tracks: [Album.Track] = []
+        for trackCoreData in tracksCoreData {
+            if let name = trackCoreData.name {
+                tracks.append(.init(name: name))
+            }
+        }
+        return tracks
+    }
+
 }
