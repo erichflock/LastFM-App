@@ -20,23 +20,11 @@ class TabBarControllerTests: XCTestCase {
     override func tearDownWithError() throws {
         sut = nil
     }
-
-    func test_tabBar_whenViewDidLoad_titleOfFirstItemShouldBeExpectedTitle() {
-        let expectedTitle = "Home"
-        
-        XCTAssertEqual(sut.tabBar.items?[0].title, expectedTitle)
-    }
     
     func test_tabBar_whenViewDidLoad_imageOfFirstItemShouldBeExpectedImage() {
         let expectedImage = UIImage(systemName: "music.note.house.fill")
         
         XCTAssertEqual(sut.tabBar.items?[0].image, expectedImage)
-    }
-    
-    func test_tabBar_whenViewDidLoad_titleOfSecondItemShouldBeExpectedTitle() {
-        let expectedTitle = "Search"
-        
-        XCTAssertEqual(sut.tabBar.items?[1].title, expectedTitle)
     }
     
     func test_tabBar_whenViewDidLoad_imageOfSecondItemShouldBeExpectedImage() {

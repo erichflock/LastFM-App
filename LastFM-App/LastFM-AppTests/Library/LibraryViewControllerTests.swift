@@ -34,7 +34,11 @@ class LibraryViewControllerTests: XCTestCase {
     
     func test_removeBarButtonItem_whenTapped_shouldPresentAlertWithCancelAndYesActions() {
         let spySut = SpyLibraryViewController()
-        spySut.loadViewIfNeeded()
+        let coreDataManager = FakeCoreDataManager()
+        coreDataManager.shouldFetchEmptyAlbums = false
+        spySut.coreDataManager = coreDataManager
+        spySut.viewWillAppear(false)
+        XCTAssertFalse(spySut.albums.isEmpty, "precondition")
         XCTAssertEqual(spySut.presentCallCount, 0, "precondition")
         XCTAssertNil(spySut.alertController, "precondition")
         
@@ -50,9 +54,11 @@ class LibraryViewControllerTests: XCTestCase {
     func test_removeBarButtonItem_whenYesActionTapped_shouldRemoveAllAlbums() {
         let spySut = SpyLibraryViewController()
         let coreDataManager = FakeCoreDataManager()
+        coreDataManager.shouldFetchEmptyAlbums = false
         spySut.coreDataManager = coreDataManager
-        spySut.loadViewIfNeeded()
+        spySut.viewWillAppear(false)
         spySut.removeBarButtonItem.tap()
+        XCTAssertFalse(spySut.albums.isEmpty, "precondition")
         XCTAssertEqual(coreDataManager.deleteAllCallCount, 0)
         
         spySut.alertController?.tapButton(atIndex: 1)
@@ -65,8 +71,9 @@ class LibraryViewControllerTests: XCTestCase {
         let spySut = SpyLibraryViewController()
         let coreDataManager = FakeCoreDataManager()
         spySut.coreDataManager = coreDataManager
-        spySut.loadViewIfNeeded()
+        spySut.viewWillAppear(false)
         spySut.removeBarButtonItem.tap()
+        XCTAssertFalse(spySut.albums.isEmpty, "precondition")
         XCTAssertEqual(coreDataManager.deleteAllCallCount, 0)
         
         spySut.alertController?.tapButton(atIndex: 0)
@@ -77,7 +84,8 @@ class LibraryViewControllerTests: XCTestCase {
     
     func test_removeBarButtonItem_whenTappedAndNoAlbums_shouldNotShowAlert() {
         let spySut = SpyLibraryViewController()
-        spySut.loadViewIfNeeded()
+        spySut.viewWillAppear(false)
+        XCTAssertTrue(spySut.albums.isEmpty, "precondition")
         XCTAssertEqual(spySut.presentCallCount, 0, "precondition")
         XCTAssertNil(spySut.alertController, "precondition")
         
@@ -86,6 +94,7 @@ class LibraryViewControllerTests: XCTestCase {
         XCTAssertEqual(spySut.presentCallCount, 0)
         XCTAssertNil(spySut.alertController)
     }
+    
 }
 
 private class FakeCoreDataManager: CoreDataManagerFetchProtocol & CoreDataManagerDeleteAllProtocol {
@@ -93,11 +102,12 @@ private class FakeCoreDataManager: CoreDataManagerFetchProtocol & CoreDataManage
     var fetchAlbumsCallCount = 0
     var deleteAllCallCount = 0
     var fetchedAlbums: [Album]?
+    var shouldFetchEmptyAlbums = false
     
     func fetchAlbums() -> [Album] {
         fetchAlbumsCallCount += 1
-        fetchedAlbums = []
-        return []
+        fetchedAlbums = shouldFetchEmptyAlbums ? [] : [createSomeAlbum()]
+        return fetchedAlbums!
     }
     
     func deleteAll() {
