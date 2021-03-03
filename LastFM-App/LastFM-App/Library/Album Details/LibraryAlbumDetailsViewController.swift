@@ -11,7 +11,7 @@ class LibraryAlbumDetailsViewController: UIViewController {
     
     let album: Album
     
-    private let albumDetailView = AlbumDetailView()
+    let albumDetailView = AlbumDetailView()
     
     var coreDataManager: CoreDataManagerSaveProtocol & CoreDataManagerDeleteProtocol = CoreDataManager.shared
     
@@ -44,6 +44,7 @@ class LibraryAlbumDetailsViewController: UIViewController {
         ])
         
         albumDetailView.viewModel = .init(album: album)
+        albumDetailView.delegate = self
     }
 }
 

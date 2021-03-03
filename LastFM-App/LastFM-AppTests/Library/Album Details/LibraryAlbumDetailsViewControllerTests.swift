@@ -39,6 +39,22 @@ class LibraryAlbumDetailsViewControllerTests: XCTestCase {
         
         XCTAssertEqual(coreDataManager.deleteAlbumCallCount, 1)
     }
+    
+    func test_albumDetailView_whenViewDidLoad_shouldHaveDelegate() {
+        XCTAssertNil(sut.albumDetailView.delegate, "precondition")
+        
+        sut.loadViewIfNeeded()
+        
+        XCTAssertNotNil(sut.albumDetailView.delegate)
+    }
+    
+    func test_albumDetailView_whenViewDidLoad_shouldHaveViewModel() {
+        XCTAssertNil(sut.albumDetailView.viewModel, "precondition")
+        
+        sut.loadViewIfNeeded()
+        
+        XCTAssertNotNil(sut.albumDetailView.viewModel)
+    }
 }
 
 private class FakeCoreDataManager: CoreDataManagerSaveProtocol, CoreDataManagerDeleteProtocol {
