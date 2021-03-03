@@ -9,12 +9,20 @@ import UIKit
 
 class LibraryViewController: UIViewController {
     
-    var albums: [Album] = [] {
+    private(set) var albums: [Album] = [] {
         didSet {
             collectionView?.reloadData()
+            if albums.isEmpty {
+                collectionView?.isHidden = true
+                addEmptyLibraryView()
+            } else {
+                removeEmptyLibraryView()
+                collectionView?.isHidden = false
+            }
         }
     }
     
+    private var emptyLibraryView: UIStackView?
     private var collectionView: UICollectionView?
     lazy private(set) var removeBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(showRemoveAlbumsAlert))
     var coreDataManager: CoreDataManagerFetchProtocol & CoreDataManagerDeleteAllProtocol = CoreDataManager.shared
@@ -80,6 +88,36 @@ class LibraryViewController: UIViewController {
     private func removeAlbums() {
         coreDataManager.deleteAll()
         albums = coreDataManager.fetchAlbums()
+    }
+    
+    private func addEmptyLibraryView() {
+        let emptyLibraryImageView = UIImageView(image: UIImage(named: "empty"))
+        let messageLabel = UILabel()
+        messageLabel.text = "Your Library is Empty"
+        messageLabel.textColor = .black
+        messageLabel.font = .systemFont(ofSize: 20, weight: .medium)
+        
+        emptyLibraryView = UIStackView()
+        emptyLibraryView?.axis = .vertical
+        emptyLibraryView?.alignment = .center
+        emptyLibraryView?.distribution = .fill
+        emptyLibraryView?.spacing = 16
+        emptyLibraryView?.addArrangedSubview(emptyLibraryImageView)
+        emptyLibraryView?.addArrangedSubview(messageLabel)
+        
+        if let emptyLibraryView = emptyLibraryView {
+            view.addSubview(emptyLibraryView)
+            emptyLibraryView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                emptyLibraryView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                emptyLibraryView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            ])
+        }
+    }
+    
+    private func removeEmptyLibraryView() {
+        emptyLibraryView?.removeFromSuperview()
+        emptyLibraryView = nil
     }
 }
 
