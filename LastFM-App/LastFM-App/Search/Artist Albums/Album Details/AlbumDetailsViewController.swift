@@ -14,6 +14,8 @@ class AlbumDetailsViewController: UIViewController {
     
     private let albumDetailView = AlbumDetailView()
     
+    var coreDataManager: CoreDataManagerSaveProtocol & CoreDataManagerDeleteProtocol = CoreDataManager.shared
+    
     init(albumTitle: String, artistName: String) {
         self.albumTitle = albumTitle
         self.artistName = artistName
@@ -85,6 +87,6 @@ extension AlbumDetailsViewController {
 extension AlbumDetailsViewController: AlbumDetailViewDelegate {
     
     func didTapSaveButton(isSelected: Bool, album: Album) {
-        isSelected ? CoreDataManager.shared.saveAlbum(newAlbum: album) : CoreDataManager.shared.deleteAlbum(album: album)
+        isSelected ? coreDataManager.saveAlbum(newAlbum: album) : coreDataManager.deleteAlbum(album: album)
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C3F2C0225EF6CE7002DCC52 /* AlbumDetailsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3F2C0125EF6CE7002DCC52 /* AlbumDetailsViewControllerTests.swift */; };
 		8C79571F25EA56AD00807591 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79571E25EA56AD00807591 /* AppDelegate.swift */; };
 		8C79572125EA56AD00807591 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79572025EA56AD00807591 /* SceneDelegate.swift */; };
 		8C79572825EA56AF00807591 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C79572725EA56AF00807591 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		25AE2983A47C2405292BF481 /* Pods-LastFM-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LastFM-App.debug.xcconfig"; path = "Target Support Files/Pods-LastFM-App/Pods-LastFM-App.debug.xcconfig"; sourceTree = "<group>"; };
 		40CFC8DCCA4318BE7C9D4183 /* Pods-LastFM-AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LastFM-AppTests.debug.xcconfig"; path = "Target Support Files/Pods-LastFM-AppTests/Pods-LastFM-AppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8C3F2C0125EF6CE7002DCC52 /* AlbumDetailsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsViewControllerTests.swift; sourceTree = "<group>"; };
 		8C79571B25EA56AD00807591 /* LastFM-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LastFM-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C79571E25EA56AD00807591 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C79572025EA56AD00807591 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +117,22 @@
 				B7AC7886551E7CC2B984BEBB /* Pods-LastFM-AppTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		8C3F2BFF25EF6CC4002DCC52 /* Artist Albums */ = {
+			isa = PBXGroup;
+			children = (
+				8C3F2C0025EF6CD1002DCC52 /* Album Details */,
+			);
+			path = "Artist Albums";
+			sourceTree = "<group>";
+		};
+		8C3F2C0025EF6CD1002DCC52 /* Album Details */ = {
+			isa = PBXGroup;
+			children = (
+				8C3F2C0125EF6CE7002DCC52 /* AlbumDetailsViewControllerTests.swift */,
+			);
+			path = "Album Details";
 			sourceTree = "<group>";
 		};
 		8C79571225EA56AD00807591 = {
@@ -215,6 +233,7 @@
 		8C79578A25EA921D00807591 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				8C3F2BFF25EF6CC4002DCC52 /* Artist Albums */,
 				8C79577A25EA8D1800807591 /* SearchTableViewControllerTests.swift */,
 			);
 			path = Search;
@@ -521,6 +540,7 @@
 				8C79577B25EA8D1800807591 /* SearchTableViewControllerTests.swift in Sources */,
 				8C79575E25EA615500807591 /* TabBarControllerTests.swift in Sources */,
 				8C79578425EA91DF00807591 /* TestHelpers.swift in Sources */,
+				8C3F2C0225EF6CE7002DCC52 /* AlbumDetailsViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

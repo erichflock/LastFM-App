@@ -7,7 +7,15 @@
 
 import CoreData
 
-class CoreDataManager {
+protocol CoreDataManagerSaveProtocol {
+    func saveAlbum(newAlbum: Album)
+}
+
+protocol CoreDataManagerDeleteProtocol {
+    func deleteAlbum(album: Album)
+}
+
+class CoreDataManager: CoreDataManagerSaveProtocol, CoreDataManagerDeleteProtocol {
     
     static let shared = CoreDataManager()
     
