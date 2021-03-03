@@ -13,6 +13,8 @@ class LibraryAlbumDetailsViewController: UIViewController {
     
     private let albumDetailView = AlbumDetailView()
     
+    var coreDataManager: CoreDataManagerSaveProtocol & CoreDataManagerDeleteProtocol = CoreDataManager.shared
+    
     init(album: Album) {
         self.album = album
         super.init(nibName: nil, bundle: nil)
@@ -45,3 +47,11 @@ class LibraryAlbumDetailsViewController: UIViewController {
     }
 }
 
+//MARK: - AlbumDetailViewDelegate
+extension LibraryAlbumDetailsViewController: AlbumDetailViewDelegate {
+    
+    func didTapSaveButton(isSelected: Bool, album: Album) {
+        isSelected ? coreDataManager.saveAlbum(newAlbum: album) : coreDataManager.deleteAlbum(album: album)
+    }
+    
+}
