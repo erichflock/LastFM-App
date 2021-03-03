@@ -48,6 +48,18 @@ class AlbumDetailsViewController: UIViewController {
         
         albumDetailView.delegate = self
     }
+    
+    private func showAlbumSavedAlert() {
+        let alert = UIAlertController(title: "Album Saved", message: "Album added to your Library", preferredStyle: .alert)
+        alert.addAction(.init(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
+    private func showAlbumDeletedAlert() {
+        let alert = UIAlertController(title: "Album Deleted", message: "Album removed from your Library", preferredStyle: .alert)
+        alert.addAction(.init(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
 }
 
 //MARK: - API Request
@@ -87,6 +99,12 @@ extension AlbumDetailsViewController {
 extension AlbumDetailsViewController: AlbumDetailViewDelegate {
     
     func didTapSaveButton(isSelected: Bool, album: Album) {
-        isSelected ? coreDataManager.saveAlbum(newAlbum: album) : coreDataManager.deleteAlbum(album: album)
+        if isSelected {
+            coreDataManager.saveAlbum(newAlbum: album)
+            showAlbumSavedAlert()
+        } else {
+            coreDataManager.deleteAlbum(album: album)
+            showAlbumDeletedAlert()
+        }
     }
 }
