@@ -65,6 +65,7 @@ class LibraryViewController: UIViewController {
     }
     
     @objc private func showRemoveAlbumsAlert() {
+        guard !albums.isEmpty else { return }
         let alert = UIAlertController(title: "Remove all albums from your Library?", message: nil, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Yes", style: .default, handler: { [weak self] _ in
             guard let self = self else { return }
