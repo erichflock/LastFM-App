@@ -43,6 +43,8 @@ class AlbumDetailsViewController: UIViewController {
             albumDetailView.leftAnchor.constraint(equalTo: view.leftAnchor),
             albumDetailView.rightAnchor.constraint(equalTo: view.rightAnchor)
         ])
+        
+        albumDetailView.delegate = self
     }
 }
 
@@ -76,5 +78,13 @@ extension AlbumDetailsViewController {
             }
         }
         return tracks
+    }
+}
+
+//MARK: - AlbumDetailsViewDelegate
+extension AlbumDetailsViewController: AlbumDetailViewDelegate {
+    
+    func didTapSaveButton(isSelected: Bool, album: Album) {
+        isSelected ? CoreDataManager.shared.saveAlbum(newAlbum: album) : CoreDataManager.shared.deleteAlbum(album: album)
     }
 }

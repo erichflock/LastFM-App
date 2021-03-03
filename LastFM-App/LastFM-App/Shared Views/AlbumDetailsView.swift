@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol AlbumDetailViewDelegate: class {
+    func didTapSaveButton(isSelected: Bool, album: Album)
+}
+
 class AlbumDetailView: UIView, UITableViewDataSource {
     
     struct ViewModel {
@@ -44,6 +48,8 @@ class AlbumDetailView: UIView, UITableViewDataSource {
     private var album: Album? {
         return viewModel?.album
     }
+    
+    weak var delegate: AlbumDetailViewDelegate?
     
     private func setupUI() {
         setupAlbumImageView()
@@ -168,7 +174,7 @@ class AlbumDetailView: UIView, UITableViewDataSource {
         saveButton.tintColor = saveButton.isSelected ? .red : .black
         
         if let album = album {
-            saveButton.isSelected ? CoreDataManager.shared.saveAlbum(newAlbum: album) : CoreDataManager.shared.deleteAlbum(album: album)
+            delegate?.didTapSaveButton(isSelected: saveButton.isSelected, album: album)
         }
     }
 }
