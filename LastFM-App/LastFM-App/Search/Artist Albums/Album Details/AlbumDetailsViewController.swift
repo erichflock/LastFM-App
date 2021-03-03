@@ -12,7 +12,7 @@ class AlbumDetailsViewController: UIViewController {
     let albumTitle: String
     let artistName: String
     
-    private let albumDetailView = AlbumDetailView()
+    let albumDetailView = AlbumDetailView()
     
     var coreDataManager: CoreDataManagerSaveProtocol & CoreDataManagerDeleteProtocol = CoreDataManager.shared
     
