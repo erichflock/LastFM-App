@@ -16,7 +16,7 @@ class LibraryViewController: UIViewController {
     }
     
     private var collectionView: UICollectionView?
-    lazy var removeBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(showRemoveAlbumsAlert))
+    lazy private(set) var removeBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(showRemoveAlbumsAlert))
     var coreDataManager: CoreDataManagerFetchProtocol & CoreDataManagerDeleteAllProtocol = CoreDataManager.shared
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,8 +71,8 @@ class LibraryViewController: UIViewController {
             self.removeAlbums()
         })
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alert.addAction(okAction)
         alert.addAction(cancelAction)
+        alert.addAction(okAction)
         present(alert, animated: true)
     }
     
