@@ -15,7 +15,11 @@ protocol CoreDataManagerDeleteProtocol {
     func deleteAlbum(album: Album)
 }
 
-class CoreDataManager: CoreDataManagerSaveProtocol, CoreDataManagerDeleteProtocol {
+protocol CoreDataManagerFetchProtocol {
+    func fetchAlbums() -> [Album]
+}
+
+class CoreDataManager: CoreDataManagerSaveProtocol, CoreDataManagerDeleteProtocol, CoreDataManagerFetchProtocol {
     
     static let shared = CoreDataManager()
     
@@ -33,17 +37,6 @@ class CoreDataManager: CoreDataManagerSaveProtocol, CoreDataManagerDeleteProtoco
     
     private var managedContext: NSManagedObjectContext {
         return persistentContainer.viewContext
-    }
-    
-    private func saveContext () {
-        if managedContext.hasChanges {
-            do {
-                try managedContext.save()
-            } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
     }
     
     func saveAlbum(newAlbum: Album) {
@@ -107,6 +100,11 @@ class CoreDataManager: CoreDataManagerSaveProtocol, CoreDataManagerDeleteProtoco
         }
         return albums
     }
+
+}
+
+//MARK: Helpers
+extension CoreDataManager {
     
     private func isAlbumAlreadySaved(album: Album) -> Bool {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "AlbumCoreData")

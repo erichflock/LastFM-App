@@ -17,9 +17,11 @@ class LibraryViewController: UIViewController {
     
     private var collectionView: UICollectionView?
     
+    var coreDataManager: CoreDataManagerFetchProtocol = CoreDataManager.shared
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        albums = CoreDataManager.shared.fetchAlbums()
+        albums = coreDataManager.fetchAlbums()
     }
     
     override func viewDidLoad() {

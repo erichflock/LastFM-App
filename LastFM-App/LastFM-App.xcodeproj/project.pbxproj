@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8C3F2C0225EF6CE7002DCC52 /* AlbumDetailsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3F2C0125EF6CE7002DCC52 /* AlbumDetailsViewControllerTests.swift */; };
+		8C3F2C0925EF73D1002DCC52 /* LibraryViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3F2C0825EF73D1002DCC52 /* LibraryViewControllerTests.swift */; };
 		8C79571F25EA56AD00807591 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79571E25EA56AD00807591 /* AppDelegate.swift */; };
 		8C79572125EA56AD00807591 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79572025EA56AD00807591 /* SceneDelegate.swift */; };
 		8C79572825EA56AF00807591 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C79572725EA56AF00807591 /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 		25AE2983A47C2405292BF481 /* Pods-LastFM-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LastFM-App.debug.xcconfig"; path = "Target Support Files/Pods-LastFM-App/Pods-LastFM-App.debug.xcconfig"; sourceTree = "<group>"; };
 		40CFC8DCCA4318BE7C9D4183 /* Pods-LastFM-AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LastFM-AppTests.debug.xcconfig"; path = "Target Support Files/Pods-LastFM-AppTests/Pods-LastFM-AppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8C3F2C0125EF6CE7002DCC52 /* AlbumDetailsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsViewControllerTests.swift; sourceTree = "<group>"; };
+		8C3F2C0825EF73D1002DCC52 /* LibraryViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewControllerTests.swift; sourceTree = "<group>"; };
 		8C79571B25EA56AD00807591 /* LastFM-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LastFM-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C79571E25EA56AD00807591 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C79572025EA56AD00807591 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,14 @@
 			path = "Album Details";
 			sourceTree = "<group>";
 		};
+		8C3F2C0725EF73B7002DCC52 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				8C3F2C0825EF73D1002DCC52 /* LibraryViewControllerTests.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		8C79571225EA56AD00807591 = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +188,7 @@
 		8C79573425EA56AF00807591 /* LastFM-AppTests */ = {
 			isa = PBXGroup;
 			children = (
+				8C3F2C0725EF73B7002DCC52 /* Library */,
 				8C79578A25EA921D00807591 /* Search */,
 				8C79578925EA921200807591 /* TabBar */,
 				8C79573525EA56AF00807591 /* LastFM_AppTests.swift */,
@@ -538,6 +549,7 @@
 			files = (
 				8C79573625EA56AF00807591 /* LastFM_AppTests.swift in Sources */,
 				8C79577B25EA8D1800807591 /* SearchTableViewControllerTests.swift in Sources */,
+				8C3F2C0925EF73D1002DCC52 /* LibraryViewControllerTests.swift in Sources */,
 				8C79575E25EA615500807591 /* TabBarControllerTests.swift in Sources */,
 				8C79578425EA91DF00807591 /* TestHelpers.swift in Sources */,
 				8C3F2C0225EF6CE7002DCC52 /* AlbumDetailsViewControllerTests.swift in Sources */,
