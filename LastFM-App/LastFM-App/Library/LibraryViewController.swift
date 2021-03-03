@@ -16,8 +16,8 @@ class LibraryViewController: UIViewController {
     }
     
     private var collectionView: UICollectionView?
-    
-    var coreDataManager: CoreDataManagerFetchProtocol = CoreDataManager.shared
+    lazy var removeBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(showRemoveAlbumsAlert))
+    var coreDataManager: CoreDataManagerFetchProtocol & CoreDataManagerDeleteAllProtocol = CoreDataManager.shared
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -31,6 +31,7 @@ class LibraryViewController: UIViewController {
     
     private func setupUI() {
         setupTitle()
+        setupNavigationBar()
         setupCollectionView()
     }
     
@@ -56,6 +57,28 @@ class LibraryViewController: UIViewController {
             collectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8),
             collectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8),
         ])
+    }
+    
+    private func setupNavigationBar() {
+        removeBarButtonItem.tintColor = .black
+        navigationItem.rightBarButtonItem = removeBarButtonItem
+    }
+    
+    @objc private func showRemoveAlbumsAlert() {
+        let alert = UIAlertController(title: "Remove all albums from your Library?", message: nil, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Yes", style: .default, handler: { [weak self] _ in
+            guard let self = self else { return }
+            self.removeAlbums()
+        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true)
+    }
+    
+    private func removeAlbums() {
+        coreDataManager.deleteAll()
+        albums = coreDataManager.fetchAlbums()
     }
 }
 

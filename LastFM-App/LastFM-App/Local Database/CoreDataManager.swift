@@ -19,7 +19,11 @@ protocol CoreDataManagerFetchProtocol {
     func fetchAlbums() -> [Album]
 }
 
-class CoreDataManager: CoreDataManagerSaveProtocol, CoreDataManagerDeleteProtocol, CoreDataManagerFetchProtocol {
+protocol CoreDataManagerDeleteAllProtocol {
+    func deleteAll()
+}
+
+class CoreDataManager: CoreDataManagerSaveProtocol, CoreDataManagerDeleteProtocol, CoreDataManagerFetchProtocol, CoreDataManagerDeleteAllProtocol {
     
     static let shared = CoreDataManager()
     
@@ -99,6 +103,17 @@ class CoreDataManager: CoreDataManagerSaveProtocol, CoreDataManagerDeleteProtoco
             print("Could not fetch. \(error), \(error.userInfo)")
         }
         return albums
+    }
+    
+    func deleteAll() {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "AlbumCoreData")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+        do {
+            try managedContext.execute(deleteRequest)
+        } catch let error as NSError {
+            print("Could not delete albums. \(error), \(error.userInfo)")
+        }
     }
 
 }
