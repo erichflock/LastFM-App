@@ -79,7 +79,7 @@ extension ArtistAlbumsViewController: UICollectionViewDataSource {
     }
     
     private func getAlbum(item: Int) -> Album? {
-        guard albums.count >= item else { return nil }
+        guard albums.count > item else { return nil }
         return albums[item]
     }
 }

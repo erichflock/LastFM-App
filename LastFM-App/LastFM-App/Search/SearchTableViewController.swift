@@ -68,7 +68,7 @@ extension SearchTableViewController  {
     }
     
     private func getArtist(row: Int) -> Artist? {
-        guard artists.count >= row else { return nil }
+        guard artists.count > row else { return nil }
         return artists[row]
     }
 }
