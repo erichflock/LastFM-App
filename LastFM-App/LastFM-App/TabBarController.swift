@@ -21,8 +21,8 @@ class TabBarController: UITabBarController {
     }
     
     private func setupTabBarAppearance() {
-        tabBar.tintColor = .white
-        tabBar.barTintColor = .black
+        tabBar.tintColor = .black
+        tabBar.barTintColor = .white
     }
     
     private func addViewControllersToTabBar() {
