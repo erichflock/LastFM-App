@@ -35,6 +35,7 @@ class SearchTableViewController: UITableViewController {
     
     private func setupTableView() {
         tableView.register(ArtistTableViewCell.self,  forCellReuseIdentifier: "ArtistTableViewCell")
+        tableView.separatorStyle = .none
     }
     
 }
