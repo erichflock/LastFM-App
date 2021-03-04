@@ -127,6 +127,7 @@ class AlbumDetailView: UIView, UITableViewDataSource {
     private func setupTracksTableView() {
         tracksTableView.dataSource = self
         tracksTableView.separatorStyle = .none
+        tracksTableView.allowsSelection = false
         
         addSubview(tracksTableView)
         tracksTableView.translatesAutoresizingMaskIntoConstraints = false
