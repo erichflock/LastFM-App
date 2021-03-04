@@ -26,6 +26,7 @@ class ArtistTableViewCell: UITableViewCell {
     
     private let artistNameLabel = UILabel()
     private let listenersCountLabel = UILabel()
+    private let arrowRightImageView = UIImageView()
     
     var viewModel: ViewModel? {
         didSet {
@@ -36,24 +37,24 @@ class ArtistTableViewCell: UITableViewCell {
     private func setupUI() {
         setupArtistLabel()
         setupListenersCountLabel()
+        setupArrowRightImageView()
     }
     
     private func setupArtistLabel() {
         artistNameLabel.textColor = .darkText
-        artistNameLabel.font = .systemFont(ofSize: 12, weight: .semibold)
+        artistNameLabel.font = .systemFont(ofSize: 16, weight: .semibold)
         
         contentView.addSubview(artistNameLabel)
         artistNameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             artistNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            artistNameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 8),
-            artistNameLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -8)
+            artistNameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 8)
         ])
     }
     
     private func setupListenersCountLabel() {
         listenersCountLabel.textColor = .darkText
-        listenersCountLabel.font = .systemFont(ofSize: 12, weight: .regular)
+        listenersCountLabel.font = .systemFont(ofSize: 14, weight: .regular)
         
         contentView.addSubview(listenersCountLabel)
         listenersCountLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -62,6 +63,20 @@ class ArtistTableViewCell: UITableViewCell {
             listenersCountLabel.leftAnchor.constraint(equalTo: artistNameLabel.leftAnchor),
             listenersCountLabel.rightAnchor.constraint(equalTo: artistNameLabel.rightAnchor),
             listenersCountLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+        ])
+    }
+    
+    private func setupArrowRightImageView() {
+        let image = UIImage(systemName: "chevron.right")?.withRenderingMode(.alwaysTemplate)
+        arrowRightImageView.image = image
+        arrowRightImageView.tintColor = .black
+        
+        contentView.addSubview(arrowRightImageView)
+        arrowRightImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            arrowRightImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            arrowRightImageView.rightAnchor.constraint(equalTo: rightAnchor, constant: -8),
+            arrowRightImageView.leftAnchor.constraint(greaterThanOrEqualTo: artistNameLabel.rightAnchor, constant: 4)
         ])
     }
     
