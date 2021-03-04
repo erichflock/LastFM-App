@@ -13,8 +13,9 @@ class AlbumDetailsViewController: UIViewController {
     let artistName: String
     
     let albumDetailView = AlbumDetailView()
+    private var album: Album?
     
-    var coreDataManager: CoreDataManagerSaveProtocol & CoreDataManagerDeleteProtocol = CoreDataManager.shared
+    var coreDataManager: CoreDataManagerSaveProtocol & CoreDataManagerDeleteProtocol & CoreDataManagerFetchAlbumProtocol = CoreDataManager.shared
     
     init(albumTitle: String, artistName: String) {
         self.albumTitle = albumTitle
@@ -24,6 +25,11 @@ class AlbumDetailsViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateAlbum()
     }
     
     override func viewDidLoad() {
@@ -60,6 +66,13 @@ class AlbumDetailsViewController: UIViewController {
         alert.addAction(.init(title: "OK", style: .default))
         present(alert, animated: true)
     }
+    
+    private func updateAlbum() {
+        guard var album = album else { return }
+        let albumSaved = coreDataManager.fetch(album: album) != nil ? true : false
+        album.isSaved = albumSaved
+        albumDetailView.viewModel = .init(album: album)
+    }
 }
 
 //MARK: - API Request
@@ -68,7 +81,10 @@ extension AlbumDetailsViewController {
     private func loadAlbum() {
         AlbumAPIRequests.fetchAlbumInformation(albumName: albumTitle, artistName: artistName, completion: { [weak self] albumAPIModel in
             guard let self = self else { return }
-            self.albumDetailView.viewModel = self.createAlbumDetailViewModel(albumFromAPI: albumAPIModel)
+            if let album = self.createAlbum(albumFromAPI: albumAPIModel) {
+                self.album = album
+                self.albumDetailView.viewModel = .init(album: album)
+            }
         })
     }
 }
@@ -76,10 +92,10 @@ extension AlbumDetailsViewController {
 //MARK: - Mapper
 extension AlbumDetailsViewController {
 
-    private func createAlbumDetailViewModel(albumFromAPI: AlbumInformation?) -> AlbumDetailView.ViewModel? {
+    private func createAlbum(albumFromAPI: AlbumInformation?) -> Album? {
         guard let albumFromAPI = albumFromAPI else { return nil }
         if let title = albumFromAPI.name, let artistName = albumFromAPI.artist, let tracks = albumFromAPI.tracks?.tracks, let image = albumFromAPI.image?.first(where: { $0.size == .large }) {
-            return .init(album: .init(name: title, imageURLString: image.text ?? "", artistName: artistName, tracks: mapTracks(albumTracksAPI: tracks)))
+            return .init(name: title, imageURLString: image.text ?? "", artistName: artistName, tracks: mapTracks(albumTracksAPI: tracks))
         }
         return nil
     }

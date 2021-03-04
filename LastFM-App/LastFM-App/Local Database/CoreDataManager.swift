@@ -15,15 +15,21 @@ protocol CoreDataManagerDeleteProtocol {
     func deleteAlbum(album: Album)
 }
 
-protocol CoreDataManagerFetchProtocol {
+protocol CoreDataManagerFetchAlbumsProtocol {
     func fetchAlbums() -> [Album]
+}
+
+protocol CoreDataManagerFetchAlbumProtocol {
+    func fetch(album: Album) -> Album?
 }
 
 protocol CoreDataManagerDeleteAllProtocol {
     func deleteAll()
 }
 
-class CoreDataManager: CoreDataManagerSaveProtocol, CoreDataManagerDeleteProtocol, CoreDataManagerFetchProtocol, CoreDataManagerDeleteAllProtocol {
+typealias CoreDataManagerProtocol = CoreDataManagerSaveProtocol & CoreDataManagerDeleteProtocol & CoreDataManagerFetchAlbumsProtocol & CoreDataManagerFetchAlbumProtocol & CoreDataManagerDeleteAllProtocol
+
+class CoreDataManager: CoreDataManagerProtocol {
     
     static let shared = CoreDataManager()
     
@@ -115,7 +121,23 @@ class CoreDataManager: CoreDataManagerSaveProtocol, CoreDataManagerDeleteProtoco
             print("Could not delete albums. \(error), \(error.userInfo)")
         }
     }
-
+    
+    func fetch(album: Album) -> Album? {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "AlbumCoreData")
+        fetchRequest.predicate = NSPredicate(format: "name == %@ AND artistName == %@", album.name, album.artistName)
+        do {
+            if let fetchedAlbums = try managedContext.fetch(fetchRequest) as? [AlbumCoreData] {
+                let fetchedAlbum = fetchedAlbums.first
+                if let name = fetchedAlbum?.name, let image = fetchedAlbum?.imageURLString, let artistiName = fetchedAlbum?.artistName, let tracks = fetchedAlbum?.tracks?.allObjects as? [TrackCoreData] {
+                    return .init(name: name, imageURLString: image, artistName: artistiName, tracks: mapTracksCoreDataToTracks(tracks), isSaved: true)
+                }
+            }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        return nil
+    }
+    
 }
 
 //MARK: Helpers

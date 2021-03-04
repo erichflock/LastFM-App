@@ -23,7 +23,7 @@ class LibraryViewController: UIViewController {
     private(set) var emptyLibraryView: UIStackView?
     private(set) var collectionView: UICollectionView?
     lazy private(set) var removeBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(showRemoveAlbumsAlert))
-    var coreDataManager: CoreDataManagerFetchProtocol & CoreDataManagerDeleteAllProtocol = CoreDataManager.shared
+    var coreDataManager: CoreDataManagerFetchAlbumsProtocol & CoreDataManagerDeleteAllProtocol = CoreDataManager.shared
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

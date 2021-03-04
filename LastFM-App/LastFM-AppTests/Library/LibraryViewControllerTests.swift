@@ -83,6 +83,8 @@ class LibraryViewControllerTests: XCTestCase {
     
     func test_removeBarButtonItem_whenTappedAndNoAlbums_shouldNotShowAlert() {
         let spySut = SpyLibraryViewController()
+        let coreDataManager = FakeCoreDataManager()
+        spySut.coreDataManager = coreDataManager
         spySut.viewWillAppear(false)
         XCTAssertTrue(spySut.albums.isEmpty, "precondition")
         XCTAssertEqual(spySut.presentCallCount, 0, "precondition")
@@ -120,7 +122,7 @@ class LibraryViewControllerTests: XCTestCase {
     }
 }
 
-private class FakeCoreDataManager: CoreDataManagerFetchProtocol & CoreDataManagerDeleteAllProtocol {
+private class FakeCoreDataManager: CoreDataManagerFetchAlbumsProtocol & CoreDataManagerDeleteAllProtocol {
     
     var fetchAlbumsCallCount = 0
     var deleteAllCallCount = 0
