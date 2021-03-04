@@ -8,7 +8,7 @@ struct ConfigKeys {
     static let APIKey = "YOUR_API_KEY"
 }
 
-![Config Keys](https://github.com/erichflock/LastFM-App/blob/main/AppStructure_ConfigKeys.png)
+![Config Keys](https://github.com/erichflock/LastFM-App/blob/main/configKeys_in_project.png)
 
 ![Library With Saved Albums](https://github.com/erichflock/LastFM-App/blob/main/library_with_saved_albums.jpeg)
 
