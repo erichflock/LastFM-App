@@ -12,7 +12,7 @@ class LibraryAlbumDetailsViewController: UIViewController {
     let album: Album
     let albumDetailView = AlbumDetailView()
     
-    var coreDataManager: CoreDataManagerSaveProtocol & CoreDataManagerDeleteProtocol = CoreDataManager.shared
+    var coreDataManager: CoreDataManagerSaveProtocol & CoreDataManagerDeleteProtocol & CoreDataManagerFetchAlbumProtocol = CoreDataManager.shared
     
     init(album: Album) {
         self.album = album
@@ -21,6 +21,11 @@ class LibraryAlbumDetailsViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        updateAlbum()
     }
     
     override func viewDidLoad() {
@@ -58,6 +63,12 @@ class LibraryAlbumDetailsViewController: UIViewController {
         present(alert, animated: true)
     }
     
+    private func updateAlbum() {
+        let albumSaved = coreDataManager.fetch(album: album) != nil ? true : false
+        var albumUpdated = album
+        albumUpdated.isSaved = albumSaved
+        albumDetailView.viewModel = .init(album: albumUpdated)
+    }
 }
 
 //MARK: - AlbumDetailViewDelegate
