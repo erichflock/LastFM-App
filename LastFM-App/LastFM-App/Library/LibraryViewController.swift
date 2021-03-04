@@ -13,17 +13,15 @@ class LibraryViewController: UIViewController {
         didSet {
             collectionView?.reloadData()
             if albums.isEmpty {
-                collectionView?.isHidden = true
                 addEmptyLibraryView()
             } else {
                 removeEmptyLibraryView()
-                collectionView?.isHidden = false
             }
         }
     }
     
-    private var emptyLibraryView: UIStackView?
-    private var collectionView: UICollectionView?
+    private(set) var emptyLibraryView: UIStackView?
+    private(set) var collectionView: UICollectionView?
     lazy private(set) var removeBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(showRemoveAlbumsAlert))
     var coreDataManager: CoreDataManagerFetchProtocol & CoreDataManagerDeleteAllProtocol = CoreDataManager.shared
     
