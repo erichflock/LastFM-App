@@ -24,18 +24,16 @@ class LibraryViewControllerTests: XCTestCase {
         let coreDataManager = FakeCoreDataManager()
         sut.coreDataManager = coreDataManager
         XCTAssertEqual(coreDataManager.fetchAlbumsCallCount, 0, "precondition")
-        XCTAssertNil(coreDataManager.fetchedAlbums)
         
         sut.viewWillAppear(false)
         
         XCTAssertEqual(coreDataManager.fetchAlbumsCallCount, 1)
-        XCTAssertNotNil(coreDataManager.fetchedAlbums)
     }
     
-    func test_removeBarButtonItem_whenTapped_shouldPresentAlertWithCancelAndYesActions() {
+    func test_removeBarButtonItem_whenTappedAndSavedAlbumsNotEmpty_shouldPresentAlertWithCancelAndYesActions() {
         let spySut = SpyLibraryViewController()
         let coreDataManager = FakeCoreDataManager()
-        coreDataManager.shouldFetchEmptyAlbums = false
+        coreDataManager.savedAlbums = [createSomeAlbum()]
         spySut.coreDataManager = coreDataManager
         spySut.viewWillAppear(false)
         XCTAssertFalse(spySut.albums.isEmpty, "precondition")
@@ -54,7 +52,7 @@ class LibraryViewControllerTests: XCTestCase {
     func test_removeBarButtonItem_whenYesActionTapped_shouldRemoveAllAlbums() {
         let spySut = SpyLibraryViewController()
         let coreDataManager = FakeCoreDataManager()
-        coreDataManager.shouldFetchEmptyAlbums = false
+        coreDataManager.savedAlbums = [createSomeAlbum()]
         spySut.coreDataManager = coreDataManager
         spySut.viewWillAppear(false)
         spySut.removeBarButtonItem.tap()
@@ -70,6 +68,7 @@ class LibraryViewControllerTests: XCTestCase {
     func test_removeBarButtonItem_whenCancelActionTapped_shouldNotRemoveAlbums() {
         let spySut = SpyLibraryViewController()
         let coreDataManager = FakeCoreDataManager()
+        coreDataManager.savedAlbums = [createSomeAlbum()]
         spySut.coreDataManager = coreDataManager
         spySut.viewWillAppear(false)
         spySut.removeBarButtonItem.tap()
@@ -101,13 +100,11 @@ private class FakeCoreDataManager: CoreDataManagerFetchProtocol & CoreDataManage
     
     var fetchAlbumsCallCount = 0
     var deleteAllCallCount = 0
-    var fetchedAlbums: [Album]?
-    var shouldFetchEmptyAlbums = false
+    var savedAlbums: [Album] = []
     
     func fetchAlbums() -> [Album] {
         fetchAlbumsCallCount += 1
-        fetchedAlbums = shouldFetchEmptyAlbums ? [] : [createSomeAlbum()]
-        return fetchedAlbums!
+        return savedAlbums
     }
     
     func deleteAll() {
