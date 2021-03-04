@@ -9,10 +9,12 @@ import UIKit
 
 class SearchTableViewController: UITableViewController {
     
+    private var emptySearchView: UIStackView?
     private let searchController = UISearchController()
     private var artists: [Artist] = [] {
         didSet {
             tableView.reloadData()
+            artists.isEmpty ? addEmptySearchView() : removeEmptySearchView()
         }
     }
     
@@ -21,6 +23,7 @@ class SearchTableViewController: UITableViewController {
         setupTitle()
         setupSearchController()
         setupTableView()
+        addEmptySearchView()
     }
     
     private func setupTitle() {
@@ -29,7 +32,7 @@ class SearchTableViewController: UITableViewController {
     
     private func setupSearchController() {
         searchController.searchBar.delegate = self
-        searchController.searchBar.placeholder = "Artists"
+        searchController.searchBar.placeholder = "Artist"
         tableView.tableHeaderView = searchController.searchBar
     }
     
@@ -38,6 +41,35 @@ class SearchTableViewController: UITableViewController {
         tableView.separatorStyle = .none
     }
     
+    private func addEmptySearchView() {
+        let emptySearchImageView = UIImageView(image: UIImage(named: "rock.music"))
+        let messageLabel = UILabel()
+        messageLabel.text = "Search your Favorite Artist"
+        messageLabel.textColor = .black
+        messageLabel.font = .systemFont(ofSize: 20, weight: .medium)
+        
+        emptySearchView = UIStackView()
+        emptySearchView?.axis = .vertical
+        emptySearchView?.alignment = .center
+        emptySearchView?.distribution = .fill
+        emptySearchView?.spacing = 8
+        emptySearchView?.addArrangedSubview(emptySearchImageView)
+        emptySearchView?.addArrangedSubview(messageLabel)
+        
+        if let emptySearchView = emptySearchView {
+            view.addSubview(emptySearchView)
+            emptySearchView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                emptySearchView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+                emptySearchView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor)
+            ])
+        }
+    }
+    
+    private func removeEmptySearchView() {
+        emptySearchView?.removeFromSuperview()
+        emptySearchView = nil
+    }
 }
 
 
