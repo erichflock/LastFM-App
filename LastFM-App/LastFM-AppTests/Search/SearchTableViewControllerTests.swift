@@ -20,12 +20,10 @@ class SearchTableViewControllerTests: XCTestCase {
         sut = nil
     }
 
-    func test_emptySearchView_whenViewDidLoad_shouldNotBeNil() {
-        XCTAssertNil(sut.emptySearchView, "precondition")
-        
+    func test_emptySearchView_whenViewDidLoad_shouldNotBeHidden() {
         sut.loadViewIfNeeded()
         
-        XCTAssertNotNil(sut.emptySearchView)
+        XCTAssertFalse(sut.emptySearchView.isHidden, "precondition")
     }
 
 }

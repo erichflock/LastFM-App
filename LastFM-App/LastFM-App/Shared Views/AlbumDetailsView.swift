@@ -32,12 +32,12 @@ class AlbumDetailView: UIView, UITableViewDataSource {
     private let artistNameLabel = UILabel()
     private let saveButton = UIButton()
     private let tracksTableView = UITableView()
-    private(set) var emptyTracksView: UIStackView?
+    let emptyTracksView = UIStackView()
     
     private var tracks: [Album.Track] = [] {
         didSet {
             tracksTableView.reloadData()
-            tracks.isEmpty ? addEmptyTracksView() : removeEmptyTracksView()
+            emptyTracksView.isHidden = tracks.isEmpty ? false : true
         }
     }
     
@@ -59,6 +59,7 @@ class AlbumDetailView: UIView, UITableViewDataSource {
         setupSaveButton()
         setupArtistNameLabel()
         setupTracksTableView()
+        setupEmptyTracksView()
     }
     
     private func setupAlbumImageView() {
@@ -172,36 +173,28 @@ class AlbumDetailView: UIView, UITableViewDataSource {
         saveButton.tintColor = saveButton.isSelected ? .red : .black
     }
     
-    private func addEmptyTracksView() {
+    private func setupEmptyTracksView() {
         let emptyTracksImageView = UIImageView(image: UIImage(named: "no.disc"))
         let messageLabel = UILabel()
         messageLabel.text = "No tracks available"
         messageLabel.textColor = .black
         messageLabel.font = .systemFont(ofSize: 20, weight: .medium)
         
-        emptyTracksView = UIStackView()
-        emptyTracksView?.axis = .vertical
-        emptyTracksView?.alignment = .center
-        emptyTracksView?.distribution = .fill
-        emptyTracksView?.spacing = 8
-        emptyTracksView?.addArrangedSubview(emptyTracksImageView)
-        emptyTracksView?.addArrangedSubview(messageLabel)
+        emptyTracksView.axis = .vertical
+        emptyTracksView.alignment = .center
+        emptyTracksView.distribution = .fill
+        emptyTracksView.spacing = 8
+        emptyTracksView.addArrangedSubview(emptyTracksImageView)
+        emptyTracksView.addArrangedSubview(messageLabel)
         
-        if let emptyTracksView = emptyTracksView {
-            addSubview(emptyTracksView)
-            emptyTracksView.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                emptyTracksView.topAnchor.constraint(equalTo: artistNameLabel.topAnchor, constant: 50),
-                emptyTracksView.centerXAnchor.constraint(equalTo: centerXAnchor)
-            ])
-        }
+        addSubview(emptyTracksView)
+        emptyTracksView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            emptyTracksView.topAnchor.constraint(equalTo: artistNameLabel.topAnchor, constant: 50),
+            emptyTracksView.centerXAnchor.constraint(equalTo: centerXAnchor)
+        ])
+        emptyTracksView.isHidden = true
     }
-    
-    private func removeEmptyTracksView() {
-        emptyTracksView?.removeFromSuperview()
-        emptyTracksView = nil
-    }
-    
     
     @objc private func didTapSaveButton() {
         saveButton.isSelected = saveButton.isSelected ? false : true

@@ -9,12 +9,12 @@ import UIKit
 
 class SearchTableViewController: UITableViewController {
     
-    private(set) var emptySearchView: UIStackView?
+    let emptySearchView = UIStackView()
     private let searchController = UISearchController()
     private var artists: [Artist] = [] {
         didSet {
             tableView.reloadData()
-            artists.isEmpty ? addEmptySearchView() : removeEmptySearchView()
+            emptySearchView.isHidden = artists.isEmpty ? false : true
         }
     }
     
@@ -23,7 +23,7 @@ class SearchTableViewController: UITableViewController {
         setupTitle()
         setupSearchController()
         setupTableView()
-        addEmptySearchView()
+        setupEmptySearchView()
     }
     
     private func setupTitle() {
@@ -41,35 +41,28 @@ class SearchTableViewController: UITableViewController {
         tableView.separatorStyle = .none
     }
     
-    private func addEmptySearchView() {
+    private func setupEmptySearchView() {
         let emptySearchImageView = UIImageView(image: UIImage(named: "rock.music"))
         let messageLabel = UILabel()
         messageLabel.text = "Search your Favorite Artist"
         messageLabel.textColor = .black
         messageLabel.font = .systemFont(ofSize: 20, weight: .medium)
         
-        emptySearchView = UIStackView()
-        emptySearchView?.axis = .vertical
-        emptySearchView?.alignment = .center
-        emptySearchView?.distribution = .fill
-        emptySearchView?.spacing = 8
-        emptySearchView?.addArrangedSubview(emptySearchImageView)
-        emptySearchView?.addArrangedSubview(messageLabel)
+        emptySearchView.axis = .vertical
+        emptySearchView.alignment = .center
+        emptySearchView.distribution = .fill
+        emptySearchView.spacing = 8
+        emptySearchView.addArrangedSubview(emptySearchImageView)
+        emptySearchView.addArrangedSubview(messageLabel)
         
-        if let emptySearchView = emptySearchView {
-            view.addSubview(emptySearchView)
-            emptySearchView.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                emptySearchView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
-                emptySearchView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor)
-            ])
-        }
+        view.addSubview(emptySearchView)
+        emptySearchView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            emptySearchView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+            emptySearchView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor)
+        ])
     }
     
-    private func removeEmptySearchView() {
-        emptySearchView?.removeFromSuperview()
-        emptySearchView = nil
-    }
 }
 
 

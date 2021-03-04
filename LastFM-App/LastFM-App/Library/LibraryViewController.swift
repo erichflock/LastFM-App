@@ -13,14 +13,14 @@ class LibraryViewController: UIViewController {
         didSet {
             collectionView?.reloadData()
             if albums.isEmpty {
-                addEmptyLibraryView()
+                emptyLibraryView.isHidden = false
             } else {
-                removeEmptyLibraryView()
+                emptyLibraryView.isHidden = true
             }
         }
     }
     
-    private(set) var emptyLibraryView: UIStackView?
+    let emptyLibraryView = UIStackView()
     private(set) var collectionView: UICollectionView?
     lazy private(set) var removeBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(showRemoveAlbumsAlert))
     var coreDataManager: CoreDataManagerFetchAlbumsProtocol & CoreDataManagerDeleteAllProtocol = CoreDataManager.shared
@@ -39,6 +39,7 @@ class LibraryViewController: UIViewController {
         setupTitle()
         setupNavigationBar()
         setupCollectionView()
+        setupEmptyLibraryView()
     }
     
     private func setupTitle() {
@@ -88,35 +89,29 @@ class LibraryViewController: UIViewController {
         albums = coreDataManager.fetchAlbums()
     }
     
-    private func addEmptyLibraryView() {
+    private func setupEmptyLibraryView() {
         let emptyLibraryImageView = UIImageView(image: UIImage(named: "empty"))
         let messageLabel = UILabel()
         messageLabel.text = "Your Library is Empty"
         messageLabel.textColor = .black
         messageLabel.font = .systemFont(ofSize: 20, weight: .medium)
         
-        emptyLibraryView = UIStackView()
-        emptyLibraryView?.axis = .vertical
-        emptyLibraryView?.alignment = .center
-        emptyLibraryView?.distribution = .fill
-        emptyLibraryView?.spacing = 16
-        emptyLibraryView?.addArrangedSubview(emptyLibraryImageView)
-        emptyLibraryView?.addArrangedSubview(messageLabel)
+        emptyLibraryView.axis = .vertical
+        emptyLibraryView.alignment = .center
+        emptyLibraryView.distribution = .fill
+        emptyLibraryView.spacing = 16
+        emptyLibraryView.addArrangedSubview(emptyLibraryImageView)
+        emptyLibraryView.addArrangedSubview(messageLabel)
         
-        if let emptyLibraryView = emptyLibraryView {
-            view.addSubview(emptyLibraryView)
-            emptyLibraryView.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                emptyLibraryView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-                emptyLibraryView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-            ])
-        }
+        view.addSubview(emptyLibraryView)
+        emptyLibraryView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            emptyLibraryView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            emptyLibraryView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        emptyLibraryView.isHidden = true
     }
     
-    private func removeEmptyLibraryView() {
-        emptyLibraryView?.removeFromSuperview()
-        emptyLibraryView = nil
-    }
 }
 
 //MARK: - UICollectionViewDataSource

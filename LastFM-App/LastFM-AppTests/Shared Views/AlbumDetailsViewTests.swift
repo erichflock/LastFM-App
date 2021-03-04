@@ -20,28 +20,28 @@ class AlbumDetailsViewTests: XCTestCase {
         sut = nil
     }
 
-    func test_emptyTracksView_whenTracksIsNil_shouldNotBeNil() {
-        XCTAssertNil(sut.emptyTracksView, "precondition")
-        
+    func test_emptyTracksView_whenTracksIsNil_shouldNotBeHidden() {
+        XCTAssertTrue(sut.emptyTracksView.isHidden, "precondition")
+
         sut.viewModel = .init(album: .init(name: "some name", imageURLString: "some url", artistName: "some name", tracks: nil, isSaved: false))
-        
-        XCTAssertNotNil(sut.emptyTracksView)
+
+        XCTAssertFalse(sut.emptyTracksView.isHidden)
     }
-    
-    func test_emptyTracksView_whenTracksIsEmpty_shouldNotBeNil() {
-        XCTAssertNil(sut.emptyTracksView, "precondition")
-        
+
+    func test_emptyTracksView_whenTracksIsEmpty_shouldNotBeHidden() {
+        XCTAssertTrue(sut.emptyTracksView.isHidden, "precondition")
+
         sut.viewModel = .init(album: .init(name: "some name", imageURLString: "some url", artistName: "some name", tracks: nil, isSaved: false))
-        
-        XCTAssertNotNil(sut.emptyTracksView)
+
+        XCTAssertFalse(sut.emptyTracksView.isHidden)
     }
-    
-    func test_emptyTracksView_whenTracks_shouldBeNil() {
-        XCTAssertNil(sut.emptyTracksView, "precondition")
-        
+
+    func test_emptyTracksView_whenTracks_shouldBeHidden() {
+        XCTAssertTrue(sut.emptyTracksView.isHidden, "precondition")
+
         sut.viewModel = .init(album: .init(name: "some name", imageURLString: "some url", artistName: "some name", tracks: [.init(name: "some track")], isSaved: false))
-        
-        XCTAssertNil(sut.emptyTracksView)
+
+        XCTAssertTrue(sut.emptyTracksView.isHidden)
     }
 
 }

@@ -96,29 +96,27 @@ class LibraryViewControllerTests: XCTestCase {
         XCTAssertNil(spySut.alertController)
     }
     
-    func test_emptyLibraryView_whenNoAlbums_shouldDisplayView() {
+    func test_emptyLibraryView_whenNoAlbums_shouldNotBeHidden() {
         let spySut = SpyLibraryViewController()
         let coreDataManager = FakeCoreDataManager()
         spySut.coreDataManager = coreDataManager
         XCTAssertTrue(coreDataManager.savedAlbums.isEmpty, "precondition")
-        XCTAssertNil(spySut.emptyLibraryView, "precondition")
         
         spySut.viewWillAppear(false)
         
-        XCTAssertNotNil(spySut.emptyLibraryView)
+        XCTAssertFalse(spySut.emptyLibraryView.isHidden)
     }
     
-    func test_emptyLibraryView_whenAlbums_shouldRemoveView() {
+    func test_emptyLibraryView_whenAlbums_shouldBeHidden() {
         let spySut = SpyLibraryViewController()
         let coreDataManager = FakeCoreDataManager()
         coreDataManager.savedAlbums = [createSomeAlbum()]
         spySut.coreDataManager = coreDataManager
         XCTAssertFalse(coreDataManager.savedAlbums.isEmpty, "precondition")
-        XCTAssertNil(spySut.emptyLibraryView)
         
         spySut.viewWillAppear(false)
         
-        XCTAssertNil(spySut.emptyLibraryView)
+        XCTAssertTrue(spySut.emptyLibraryView.isHidden)
     }
 }
 

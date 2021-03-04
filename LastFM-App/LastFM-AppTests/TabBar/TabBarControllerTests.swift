@@ -22,13 +22,13 @@ class TabBarControllerTests: XCTestCase {
     }
     
     func test_tabBar_whenViewDidLoad_imageOfFirstItemShouldBeExpectedImage() {
-        let expectedImage = UIImage(systemName: "music.note.house.fill")
+        let expectedImage = UIImage(named: "music.library")
         
         XCTAssertEqual(sut.tabBar.items?[0].image, expectedImage)
     }
     
     func test_tabBar_whenViewDidLoad_imageOfSecondItemShouldBeExpectedImage() {
-        let expectedImage = UIImage(systemName: "magnifyingglass.circle.fill")
+        let expectedImage = UIImage(systemName: "magnifyingglass")
         
         XCTAssertEqual(sut.tabBar.items?[1].image, expectedImage)
     }
