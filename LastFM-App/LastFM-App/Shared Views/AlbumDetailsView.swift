@@ -32,7 +32,7 @@ class AlbumDetailView: UIView, UITableViewDataSource {
     private let artistNameLabel = UILabel()
     private let saveButton = UIButton()
     private let tracksTableView = UITableView()
-    private var emptyTracksView: UIStackView?
+    private(set) var emptyTracksView: UIStackView?
     
     private var tracks: [Album.Track] = [] {
         didSet {
@@ -162,8 +162,7 @@ class AlbumDetailView: UIView, UITableViewDataSource {
     }
     
     private func updateTracks() {
-        guard let updatedTracks = album?.tracks else { return }
-        tracks = updatedTracks
+        tracks = album?.tracks ?? []
     }
     
     private func updateSaveButton() {
