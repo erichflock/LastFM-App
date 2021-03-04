@@ -9,7 +9,7 @@ import UIKit
 
 class SearchTableViewController: UITableViewController {
     
-    private var emptySearchView: UIStackView?
+    private(set) var emptySearchView: UIStackView?
     private let searchController = UISearchController()
     private var artists: [Artist] = [] {
         didSet {

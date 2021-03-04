@@ -11,6 +11,7 @@
 		8C3F2C0925EF73D1002DCC52 /* LibraryViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3F2C0825EF73D1002DCC52 /* LibraryViewControllerTests.swift */; };
 		8C3F2C1025EF7845002DCC52 /* LibraryAlbumDetailsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3F2C0F25EF7845002DCC52 /* LibraryAlbumDetailsViewControllerTests.swift */; };
 		8C3F2C1F25F1539B002DCC52 /* AlbumDetailsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3F2C1E25F1539B002DCC52 /* AlbumDetailsViewTests.swift */; };
+		8C3F2C2525F15BF9002DCC52 /* SearchTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3F2C2425F15BF9002DCC52 /* SearchTableViewControllerTests.swift */; };
 		8C79571F25EA56AD00807591 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79571E25EA56AD00807591 /* AppDelegate.swift */; };
 		8C79572125EA56AD00807591 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79572025EA56AD00807591 /* SceneDelegate.swift */; };
 		8C79572825EA56AF00807591 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C79572725EA56AF00807591 /* Assets.xcassets */; };
@@ -57,6 +58,7 @@
 		8C3F2C0825EF73D1002DCC52 /* LibraryViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewControllerTests.swift; sourceTree = "<group>"; };
 		8C3F2C0F25EF7845002DCC52 /* LibraryAlbumDetailsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryAlbumDetailsViewControllerTests.swift; sourceTree = "<group>"; };
 		8C3F2C1E25F1539B002DCC52 /* AlbumDetailsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsViewTests.swift; sourceTree = "<group>"; };
+		8C3F2C2425F15BF9002DCC52 /* SearchTableViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewControllerTests.swift; sourceTree = "<group>"; };
 		8C79571B25EA56AD00807591 /* LastFM-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LastFM-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C79571E25EA56AD00807591 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C79572025EA56AD00807591 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				8C3F2BFF25EF6CC4002DCC52 /* Artist Albums */,
+				8C3F2C2425F15BF9002DCC52 /* SearchTableViewControllerTests.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				8C79578425EA91DF00807591 /* TestHelpers.swift in Sources */,
 				8C3F2C1025EF7845002DCC52 /* LibraryAlbumDetailsViewControllerTests.swift in Sources */,
 				8C3F2C0225EF6CE7002DCC52 /* AlbumDetailsViewControllerTests.swift in Sources */,
+				8C3F2C2525F15BF9002DCC52 /* SearchTableViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
