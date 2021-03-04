@@ -47,10 +47,6 @@ class AlbumDetailsViewControllerTests: XCTestCase {
 }
 
 private class FakeCoreDataManager: CoreDataManagerSaveProtocol, CoreDataManagerDeleteProtocol & CoreDataManagerFetchAlbumProtocol {
-    func fetchAlbums() -> [Album] {
-        return []
-    }
-    
     
     var saveAlbumCallCount = 0
     var deleteAlbumCallCount = 0
