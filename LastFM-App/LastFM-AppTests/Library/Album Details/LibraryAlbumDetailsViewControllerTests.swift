@@ -57,7 +57,7 @@ class LibraryAlbumDetailsViewControllerTests: XCTestCase {
     }
 }
 
-private class FakeCoreDataManager: CoreDataManagerSaveProtocol, CoreDataManagerDeleteProtocol {
+private class FakeCoreDataManager: CoreDataManagerSaveProtocol, CoreDataManagerDeleteProtocol & CoreDataManagerFetchAlbumProtocol {
     
     var saveAlbumCallCount = 0
     var deleteAlbumCallCount = 0
@@ -68,5 +68,9 @@ private class FakeCoreDataManager: CoreDataManagerSaveProtocol, CoreDataManagerD
     
     func deleteAlbum(album: Album) {
         deleteAlbumCallCount += 1
+    }
+    
+    func fetch(album: Album) -> Album? {
+        return nil
     }
 }
