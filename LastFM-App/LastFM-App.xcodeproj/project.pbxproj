@@ -10,6 +10,7 @@
 		8C3F2C0225EF6CE7002DCC52 /* AlbumDetailsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3F2C0125EF6CE7002DCC52 /* AlbumDetailsViewControllerTests.swift */; };
 		8C3F2C0925EF73D1002DCC52 /* LibraryViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3F2C0825EF73D1002DCC52 /* LibraryViewControllerTests.swift */; };
 		8C3F2C1025EF7845002DCC52 /* LibraryAlbumDetailsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3F2C0F25EF7845002DCC52 /* LibraryAlbumDetailsViewControllerTests.swift */; };
+		8C3F2C1F25F1539B002DCC52 /* AlbumDetailsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3F2C1E25F1539B002DCC52 /* AlbumDetailsViewTests.swift */; };
 		8C79571F25EA56AD00807591 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79571E25EA56AD00807591 /* AppDelegate.swift */; };
 		8C79572125EA56AD00807591 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79572025EA56AD00807591 /* SceneDelegate.swift */; };
 		8C79572825EA56AF00807591 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C79572725EA56AF00807591 /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 		8C3F2C0125EF6CE7002DCC52 /* AlbumDetailsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsViewControllerTests.swift; sourceTree = "<group>"; };
 		8C3F2C0825EF73D1002DCC52 /* LibraryViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewControllerTests.swift; sourceTree = "<group>"; };
 		8C3F2C0F25EF7845002DCC52 /* LibraryAlbumDetailsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryAlbumDetailsViewControllerTests.swift; sourceTree = "<group>"; };
+		8C3F2C1E25F1539B002DCC52 /* AlbumDetailsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsViewTests.swift; sourceTree = "<group>"; };
 		8C79571B25EA56AD00807591 /* LastFM-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LastFM-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C79571E25EA56AD00807591 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C79572025EA56AD00807591 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -154,6 +156,14 @@
 			path = "Album Details";
 			sourceTree = "<group>";
 		};
+		8C3F2C1D25F15384002DCC52 /* Shared Views */ = {
+			isa = PBXGroup;
+			children = (
+				8C3F2C1E25F1539B002DCC52 /* AlbumDetailsViewTests.swift */,
+			);
+			path = "Shared Views";
+			sourceTree = "<group>";
+		};
 		8C79571225EA56AD00807591 = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +207,7 @@
 		8C79573425EA56AF00807591 /* LastFM-AppTests */ = {
 			isa = PBXGroup;
 			children = (
+				8C3F2C1D25F15384002DCC52 /* Shared Views */,
 				8C3F2C0725EF73B7002DCC52 /* Library */,
 				8C79578A25EA921D00807591 /* Search */,
 				8C79578925EA921200807591 /* TabBar */,
@@ -555,6 +566,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C3F2C1F25F1539B002DCC52 /* AlbumDetailsViewTests.swift in Sources */,
 				8C79573625EA56AF00807591 /* LastFM_AppTests.swift in Sources */,
 				8C3F2C0925EF73D1002DCC52 /* LibraryViewControllerTests.swift in Sources */,
 				8C79575E25EA615500807591 /* TabBarControllerTests.swift in Sources */,
